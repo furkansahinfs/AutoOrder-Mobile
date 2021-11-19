@@ -1,0 +1,80 @@
+import axios, {AxiosInstance} from 'axios';
+
+export interface ApiHelperOptions {
+  baseURL: string;
+  timeout?: number;
+}
+
+export default class ApiHelper {
+  api: AxiosInstance;
+  token: string | null | undefined;
+  lang!: string | null;
+
+  constructor(options: ApiHelperOptions) {
+    const {baseURL, timeout = 10000} = options;
+    this.api = axios.create({
+      baseURL,
+      timeout,
+      headers: {'Content-Type': 'application/json'},
+    });
+
+    this.api.interceptors.request.use((prevConfig: any) => {
+      const {...config} = prevConfig;
+
+      if (this.lang) {
+        config.headers['Accept-Language'] = this.lang;
+      }
+
+      if (this.token) {
+        config.headers.Authorization = this.token;
+      }
+
+      return config;
+    });
+  }
+
+  // call this after login and application start
+  setToken = (token: string, type = 'Bearer'): void => {
+    this.token = `${type} ${token}`;
+  };
+
+  // call this after the language changed and application start
+  setLanguage = (lang: string): void => {
+    this.lang = lang;
+  };
+
+  POST = (path: string, data: any, config: {}) => {
+    return this.api
+      .post(path, data, config)
+      .then((response: any) => response.data)
+      .catch((error: any) => error.response);
+  };
+
+  DELETE = (path: string, data: any) => {
+    return this.api
+      .delete(path, data)
+      .then((response: any) => response.data)
+      .catch((error: any) => error.response);
+  };
+
+  GET = (path: string, config: {}) => {
+    return this.api
+      .get(path, config)
+      .then((response: any) => response.data)
+      .catch((error: any) => error.response);
+  };
+
+  PUT = (path: string, data: any, config: {}) => {
+    return this.api
+      .put(path, data, config)
+      .then((response: any) => response.data)
+      .catch((error: any) => error.response);
+  };
+
+  PATCH = (path: string, data: any, config: {}) => {
+    return this.api
+      .patch(path, data, config)
+      .then((response: any) => response.data)
+      .catch((error: any) => error.response);
+  };
+}
