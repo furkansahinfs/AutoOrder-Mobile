@@ -7,7 +7,7 @@ import {
 
 export const languageAdd = (language: string): LanguageAddAction => ({
   type: LANGUAGE_ADD,
-  payload: {language},
+  payload: { language },
 });
 
 export const languageClear = (): LanguageClearAction => ({

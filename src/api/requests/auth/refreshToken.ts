@@ -1,7 +1,7 @@
 import api from '../../index';
-import {API_CLIENT_ID} from '@env';
+import { API_CLIENT_ID } from '@env';
 import store from '../../../store';
-import {updateDeviceId} from '../../../helpers';
+import { updateDeviceId } from '../../../helpers';
 
 async function getDeviceId() {
   let device_id = store.getState().userCredentials.deviceid;
@@ -11,29 +11,25 @@ async function getDeviceId() {
   return device_id;
 }
 
-const refreshToken = async (refresh_token: string) => {
+const refreshToken = async (access_token: string) => {
   const path = '/auth/login';
   const deviceid = await getDeviceId();
   const json = {
     client_id: API_CLIENT_ID,
     client_secret: deviceid,
-    grant_type: 'refresh_token',
-    refresh_token: refresh_token,
+    grant_type: 'access_token',
+    access_token: access_token,
     username: '',
     password: '',
   };
-  const data = new URLSearchParams(json).toString();
 
-  return await api
-    .POST(path, data, {
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    })
-    .then(result => {
-      if (result?.data?.message) {
-        return result.data.message;
-      }
-      return result;
-    });
+  return await api.POST(path, json, {}).then((result: any) => {
+    if (result.status === 200) {
+      return result.data;
+    } else {
+      return result.data.error;
+    }
+  });
 };
 
 export default refreshToken;

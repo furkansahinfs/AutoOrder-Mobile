@@ -1,6 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   forgetPasswordAndActivation: {
@@ -10,7 +9,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     marginVertical: '1%',
-    fontSize: (window.height / window.width) * 9,
+    fontSize: scale(14),
   },
 
   mainView: {
@@ -18,12 +17,12 @@ const styles = StyleSheet.create({
   },
 
   welcomeText: {
-    marginVertical: window.height * 0.015,
+    marginVertical: scale(30),
     marginHorizontal: '6%',
   },
 
   view: {
-    marginVertical: window.height * 0.09,
+    marginVertical: scale(50),
   },
 });
 

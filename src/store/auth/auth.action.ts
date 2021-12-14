@@ -9,14 +9,14 @@ import {
   AUTH_REMOVE_TOKEN,
 } from './auth.types';
 
-export const authAddToken = (refresh_token: string): AuthAddTokenAction => ({
+export const authAddToken = (access_token: string): AuthAddTokenAction => ({
   type: AUTH_ADD_TOKEN,
-  payload: {refresh_token},
+  payload: { access_token },
 });
 
 export const authAddDevice = (deviceid: string): AuthAddDeviceAction => ({
   type: AUTH_ADD_DEVICE,
-  payload: {deviceid},
+  payload: { deviceid },
 });
 
 export const authClear = (): AuthClearAction => ({

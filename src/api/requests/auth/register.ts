@@ -8,7 +8,7 @@ interface SignupProps {
   surname: string | null;
 }
 
-const register = async ({email, name, password, phone, surname}: SignupProps) => {
+const register = async ({ email, name, password, phone, surname }: SignupProps) => {
   const path = '/auth/register';
   const json = {
     email: email,
@@ -18,10 +18,11 @@ const register = async ({email, name, password, phone, surname}: SignupProps) =>
     surname: surname,
   };
   return await api.POST(path, json, {}).then((result: any) => {
-    if (result.data?.error?.message) {
-      return result.data.error.message;
+    if (result.status === 200) {
+      return result.data;
+    } else {
+      return result.data.error;
     }
-    return result.data;
   });
 };
 

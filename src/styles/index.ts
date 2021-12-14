@@ -1,1 +1,1 @@
-export {default as stylesGlobal} from './globalStyles';
+export { default as stylesGlobal } from './globalStyles';

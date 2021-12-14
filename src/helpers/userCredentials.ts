@@ -1,11 +1,11 @@
 import * as Keychain from 'react-native-keychain';
 import api from '../api';
 import store from '../store';
-import {authAddToken, authRemoveToken} from '../store/auth';
+import { authAddToken, authRemoveToken } from '../store/auth';
 
 /**
  * Get the user credentials using redux
- * {refresh_token: string, deviceid: string}
+ * {access_token: string, deviceid: string}
  *
  */
 export function getUserCredentials() {
@@ -18,24 +18,24 @@ export function getUserCredentials() {
  *
  */
 export async function loadUserCredentialsToRedux() {
-  const refresh_token_keychain = await Keychain.getInternetCredentials('CREDENTIALS');
-  if (refresh_token_keychain) {
-    store.dispatch(authAddToken(refresh_token_keychain.password)); // Update user credentials from reducer
+  const access_token_keychain = await Keychain.getInternetCredentials('CREDENTIALS');
+  if (access_token_keychain) {
+    store.dispatch(authAddToken(access_token_keychain.password)); // Update user credentials from reducer
   } else {
-    store.dispatch(authRemoveToken()); // Clear refresh token of user credentials from reducer
+    store.dispatch(authRemoveToken()); // Clear access token of user credentials from reducer
     api.setToken(''); // set api token
   }
 }
 
 /**
- * Get the refresh_token as parameter
+ * Get the access_token as parameter
  * Save it to the keychain
  *
- * @param refresh_token
+ * @param access_token
  */
-export async function setUserCredentials(refresh_token: string) {
+export async function setUserCredentials(access_token: string) {
   // Store the credentials
-  await Keychain.setInternetCredentials('CREDENTIALS', 'refresh_token', refresh_token);
+  await Keychain.setInternetCredentials('CREDENTIALS', 'access_token', access_token);
 }
 
 /**

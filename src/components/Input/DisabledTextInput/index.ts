@@ -1,1 +1,1 @@
-export {default} from './DisabledTextInput';
+export { default } from './DisabledTextInput';

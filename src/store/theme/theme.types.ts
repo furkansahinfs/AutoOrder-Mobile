@@ -7,12 +7,12 @@ export type ThemeState = {
 
 export interface DarkOnAction {
   type: typeof DARK;
-  payload: {theme: string};
+  payload: { theme: string };
 }
 
 export interface LightOnAction {
   type: typeof LIGHT;
-  payload: {theme: string};
+  payload: { theme: string };
 }
 
 export type ThemeAction = DarkOnAction | LightOnAction;

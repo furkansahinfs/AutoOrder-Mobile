@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../Icon.styles';
 
@@ -9,7 +9,7 @@ interface IconProps {
   color: string;
 }
 
-const DefaultIconView = ({onPressFunction, name, color}: IconProps) => {
+const DefaultIconView = ({ onPressFunction, name, color }: IconProps) => {
   return (
     <TouchableOpacity onPress={onPressFunction}>
       <Icon name={name} size={styles.iconStyle.height} color={color} />

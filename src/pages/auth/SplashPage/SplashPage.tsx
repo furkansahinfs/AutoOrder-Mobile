@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {
   isAuthenticated,
   getLanguage,
@@ -9,11 +9,7 @@ import {
 } from '../../../helpers';
 import styles from './SplashPage.styles';
 import OneSignal from 'react-native-onesignal';
-import {NotificationEntity} from '../../../assets/interfaces';
-
-//TODO Refactoring
-//TODO Refactoring
-//TODO Refactoring
+import { NotificationEntity } from '../../../assets/interfaces';
 
 export default function SplashPage() {
   let isAuth = false;
@@ -97,17 +93,17 @@ export default function SplashPage() {
     if (!hasSelectedLang) {
       navigation.reset({
         index: 0,
-        routes: [{name: 'Language', params: {page: 'Splash'}}],
+        routes: [{ name: 'Language', params: { page: 'Splash' } }],
       });
     } else if (!isAuth) {
       navigation.reset({
         index: 0,
-        routes: [{name: 'Login'}],
+        routes: [{ name: 'Login' }],
       });
     } else if (loadMain) {
       navigation.reset({
         index: 0,
-        routes: [{name: 'Main'}],
+        routes: [{ name: 'Main' }],
       });
     }
   }

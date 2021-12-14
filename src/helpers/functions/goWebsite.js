@@ -1,4 +1,4 @@
-import {Linking} from 'react-native';
+import { Linking } from 'react-native';
 
 /**
  * The function provides to open the given website if exists
@@ -11,14 +11,14 @@ function goWebsite(url) {
     }
 
     Linking.canOpenURL(url)
-      .then(supported => {
+      .then((supported) => {
         if (!supported) {
           console.log("Can't handle url: " + url);
         } else {
           return Linking.openURL(url);
         }
       })
-      .catch(err => console.error('An error occurred', err));
+      .catch((err) => console.error('An error occurred', err));
   }
 }
 

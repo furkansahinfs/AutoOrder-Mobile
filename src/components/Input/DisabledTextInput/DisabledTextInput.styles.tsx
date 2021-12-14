@@ -1,12 +1,11 @@
-import {Dimensions, StyleSheet} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   input: {
     width: '100%',
-    fontSize: (window.height / window.width) * 5,
-    paddingHorizontal: window.width * 0.05,
+    fontSize: scale(10),
+    paddingHorizontal: scale(5),
     alignSelf: 'center',
   },
 });

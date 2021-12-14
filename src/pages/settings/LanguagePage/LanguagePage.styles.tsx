@@ -1,5 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native';
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   headText: {
@@ -7,25 +7,23 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'normal',
     paddingTop: '4%',
-    fontSize: (window.height / window.width) * 12,
+    fontSize: scale(20),
     color: 'white',
   },
 
   logo: {
-    width: window.height * 0.25,
-    height: window.height * 0.2,
-    marginTop: window.height * 0.15,
+    width: scale(200),
+    height: scale(150),
     borderColor: 'white',
     borderWidth: 2,
-    borderRadius: window.height * 0.05,
+    marginVertical: scale(40),
+    borderRadius: scale(5),
     alignSelf: 'center',
     justifyContent: 'center',
   },
 
   view: {
-    width: window.width * 1,
-    height: window.height * 1,
-    alignItems: 'center',
+    flex: 1,
     backgroundColor: '#3454fc',
   },
 });

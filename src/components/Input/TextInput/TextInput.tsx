@@ -1,8 +1,8 @@
 import React from 'react';
-import {KeyboardTypeOptions} from 'react-native';
-import {TextInput as NativeTextInput} from 'react-native-paper';
+import { KeyboardTypeOptions } from 'react-native';
+import { TextInput as NativeTextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useTheme} from '../../../theme';
+import { useTheme } from '../../../theme';
 import styles from './TextInput.styles';
 
 interface TextInputProps {
@@ -22,7 +22,7 @@ const TextInput = ({
   secureText,
   iconName,
 }: TextInputProps) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   return (
     <NativeTextInput
       mode="outlined"

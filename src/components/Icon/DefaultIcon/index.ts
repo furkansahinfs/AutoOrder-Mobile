@@ -1,1 +1,1 @@
-export {default as DefaultIcon} from './DefaultIcon';
+export { default as DefaultIcon } from './DefaultIcon';

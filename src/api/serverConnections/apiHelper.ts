@@ -1,4 +1,5 @@
-import axios, {AxiosInstance} from 'axios';
+import axios, { AxiosInstance } from 'axios';
+import { ReRequest } from '../requests';
 
 export interface ApiHelperOptions {
   baseURL: string;
@@ -11,15 +12,15 @@ export default class ApiHelper {
   lang!: string | null;
 
   constructor(options: ApiHelperOptions) {
-    const {baseURL, timeout = 10000} = options;
+    const { baseURL, timeout = 10000 } = options;
     this.api = axios.create({
       baseURL,
       timeout,
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
     });
 
     this.api.interceptors.request.use((prevConfig: any) => {
-      const {...config} = prevConfig;
+      const { ...config } = prevConfig;
 
       if (this.lang) {
         config.headers['Accept-Language'] = this.lang;
@@ -46,35 +47,78 @@ export default class ApiHelper {
   POST = (path: string, data: any, config: {}) => {
     return this.api
       .post(path, data, config)
-      .then((response: any) => response.data)
-      .catch((error: any) => error.response);
+      .then((response: any) => {
+        return this.controlResponse(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+        return error.response;
+      });
   };
 
   DELETE = (path: string, data: any) => {
     return this.api
       .delete(path, data)
-      .then((response: any) => response.data)
-      .catch((error: any) => error.response);
+      .then((response: any) => {
+        return this.controlResponse(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+        return error.response;
+      });
   };
 
   GET = (path: string, config: {}) => {
     return this.api
       .get(path, config)
-      .then((response: any) => response.data)
-      .catch((error: any) => error.response);
+      .then((response: any) => {
+        return this.controlResponse(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+        return error.response;
+      });
   };
 
   PUT = (path: string, data: any, config: {}) => {
     return this.api
       .put(path, data, config)
-      .then((response: any) => response.data)
-      .catch((error: any) => error.response);
+      .then((response: any) => {
+        return this.controlResponse(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+        return error.response;
+      });
   };
 
   PATCH = (path: string, data: any, config: {}) => {
     return this.api
       .patch(path, data, config)
-      .then((response: any) => response.data)
-      .catch((error: any) => error.response);
+      .then((response: any) => {
+        return this.controlResponse(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+        return error.response;
+      });
+  };
+
+  controlResponse = async (response: any) => {
+    if (response.status === 200) {
+      return {
+        data: response.data,
+        success: true,
+        status: response.status,
+      };
+    } else if (response.status === 401) {
+      return await ReRequest(response.config);
+    } else {
+      return {
+        data: response.data,
+        success: false,
+        status: response.status,
+      };
+    }
   };
 }

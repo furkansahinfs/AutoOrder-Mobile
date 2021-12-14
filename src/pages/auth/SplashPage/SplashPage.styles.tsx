@@ -1,12 +1,12 @@
-import {StyleSheet, Dimensions} from 'react-native';
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   logo: {
-    width: window.height * 0.2,
-    height: window.height * 0.2,
+    width: '20%',
+    height: '20%',
     backgroundColor: 'white',
-    borderRadius: window.height * 0.05,
+    borderRadius: scale(30),
     alignSelf: 'center',
     justifyContent: 'center',
   },
@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'normal',
     paddingTop: '4%',
-    fontSize: (window.height / window.width) * 14,
+    fontSize: scale(20),
     color: 'white',
   },
 
   view: {
-    width: window.width * 1,
-    height: window.height * 1,
+    width: '100%',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#3454fc',

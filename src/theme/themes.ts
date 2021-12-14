@@ -41,4 +41,4 @@ const MyDarkTheme = {
     backdrop: 'black',
   },
 };
-export {MyDarkTheme, MyDefaultTheme};
+export { MyDarkTheme, MyDefaultTheme };

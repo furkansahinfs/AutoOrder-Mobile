@@ -1,10 +1,8 @@
-import {Dimensions, StyleSheet} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   buttonText: {
-    width: window.width * 0.7,
+    width: '70%',
     alignSelf: 'center',
     justifyContent: 'center',
   },

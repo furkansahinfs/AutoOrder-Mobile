@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../api';
-import {I18N} from '../locales';
+import { I18N } from '../locales';
 import store from '../store';
-import {languageAdd, languageClear} from '../store/language';
+import { languageAdd, languageClear } from '../store/language';
 
 /**
  * Get the language from Redux

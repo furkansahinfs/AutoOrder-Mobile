@@ -1,7 +1,7 @@
 import api from '../../index';
-import {API_CLIENT_ID} from '@env';
+import { API_CLIENT_ID } from '@env';
 import store from '../../../store';
-import {updateDeviceId} from '../../../helpers';
+import { updateDeviceId } from '../../../helpers';
 
 async function getDeviceId() {
   let device_id = store.getState().userCredentials.deviceid;
@@ -19,24 +19,16 @@ const login = async (email: string, password: string) => {
     client_secret: deviceid,
     grant_type: 'password',
     password: password,
-    refresh_token: '',
     username: email,
   };
-  const data = new URLSearchParams(json).toString();
 
-  return await api
-    .POST(path, data, {
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    })
-    .then(result => {
-      if (result?.data?.error) {
-        return result.data.error.message;
-      }
-      if (result?.data?.message) {
-        return result.data.message;
-      }
-      return result;
-    });
+  return await api.POST(path, json, {}).then((result: any) => {
+    if (result.status === 200) {
+      return result.data;
+    } else {
+      return result.data.error;
+    }
+  });
 };
 
 export default login;

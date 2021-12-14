@@ -1,1 +1,1 @@
-export {default as ForgetPasswordAndActivationPage} from './ForgetPasswordAndActivation';
+export { default as ForgetPasswordAndActivationPage } from './ForgetPasswordAndActivation';

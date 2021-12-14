@@ -1,14 +1,13 @@
-import {Dimensions, StyleSheet} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   button: {
-    padding: window.height * 0.01,
-    borderRadius: 20,
+    padding: scale(2),
+    borderRadius: scale(30),
   },
   iconStyle: {
-    height: (window.height / window.width) * 14,
+    height: scale(12),
   },
 });
 

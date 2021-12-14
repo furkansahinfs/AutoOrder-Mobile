@@ -1,4 +1,4 @@
-import {loadLanguageToRedux, setLanguage} from '../../../helpers';
+import { loadLanguageToRedux, setLanguage } from '../../../helpers';
 /**
  * Set the selected language to the AsyncStorage,
  * load to the redux
@@ -14,6 +14,6 @@ export async function adjust(language: string, navigation: any, page: string) {
   await loadLanguageToRedux();
   navigation.reset({
     index: 0,
-    routes: [{name: page}],
+    routes: [{ name: page }],
   });
 }

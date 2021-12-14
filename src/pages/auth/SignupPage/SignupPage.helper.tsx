@@ -1,7 +1,7 @@
-import {MailValidator, PasswordValidator} from '../../../validator';
-import {Toast} from '../../../components';
-import {I18N} from '../../../locales/language';
-import {SignupRequest} from '../../../api';
+import { MailValidator, PasswordValidator } from '../../../validator';
+import { Toast } from '../../../components';
+import { I18N } from '../../../locales/language';
+import { SignupRequest } from '../../../api';
 
 /**
  * The function controls that given email and password are valid
@@ -40,11 +40,11 @@ export function validateInfoInputs(name: string, surname: string) {
   let errorMessage = '';
 
   if (!name) {
-    errorMessage += I18N.t('emptyName') + '\n';
+    errorMessage += I18N.t('signupPage.emptyName') + '\n';
   }
 
   if (!surname) {
-    errorMessage += I18N.t('emptySurname') + '\n';
+    errorMessage += I18N.t('signupPage.emptySurname') + '\n';
   }
 
   const isValidated = !errorMessage;
@@ -77,7 +77,7 @@ export async function register(json: SignupProps, navigation: any) {
   if (!response?.id) {
     Toast(response, true);
   } else {
-    Toast(I18N.t('signupSuccessfull'), true);
+    Toast(I18N.t('signupPage.signupSuccessfull'), true);
     navigation.navigate('Login');
   }
 }

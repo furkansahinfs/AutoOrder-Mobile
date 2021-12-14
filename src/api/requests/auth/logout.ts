@@ -1,5 +1,4 @@
 import api from '../../index';
-import rerequest from '../rerequest';
 import store from '../../../store';
 
 const logout = async () => {
@@ -8,16 +7,11 @@ const logout = async () => {
   const searchParams = new URLSearchParams();
   searchParams.append('device_id', device_id);
 
-  return await api.GET(path, {params: searchParams}).then(async (result: any) => {
-    if (result.status === 401) {
-      result = await rerequest(result.config);
-    }
-    if (result?.data?.error?.message) {
-      return result.data.error.message;
-    } else if (result?.data?.message) {
-      return 'Successfull';
+  return await api.GET(path, { params: searchParams }).then(async (result: any) => {
+    if (result.status === 200) {
+      return true;
     } else {
-      return 'error';
+      return result.data.error;
     }
   });
 };

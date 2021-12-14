@@ -1,13 +1,12 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {Image, SafeAreaView, ScrollView, Text, View} from 'react-native';
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
-import {Switch} from 'react-native-paper';
-import {DocumentPickerResponse} from 'react-native-document-picker';
-import {Badge} from 'react-native-elements';
-import {getTheme} from '../../../helpers';
-import {ActivityIndicator, Button, DefaultIcon, TextButton, Toast} from '../../../components';
-import {I18N} from '../../../locales';
-import {Images} from '../../../assets';
+import React, { useEffect, useState } from 'react';
+import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { Switch } from 'react-native-paper';
+import { DocumentPickerResponse } from 'react-native-document-picker';
+import { Badge } from 'react-native-elements';
+import { getTheme } from '../../../helpers';
+import { ActivityIndicator, DefaultIcon, TextButton, Toast } from '../../../components';
+import { I18N } from '../../../locales';
+import { Images } from '../../../assets';
 import {
   getProfileData,
   getLabel,
@@ -16,54 +15,43 @@ import {
   setAppTheme,
   setPicture,
   PhotoProps,
-  getUnreadNotificationCount,
 } from './ProfilePage.helper';
 import styles from './ProfilePage.styles';
-import {stylesGlobal} from '../../../styles';
+import { stylesGlobal } from '../../../styles';
 import useTheme from '../../../theme/useTheme';
-import {ProfileData} from '../../../assets/interfaces';
+import { ProfileData } from '../../../assets/interfaces';
+import { navigate } from '../../../navigation';
 
 //TODO Refactoring
 //TODO Refactoring
 //TODO Refactoring
 
 export default function ProfilePage() {
-  const [profileData, setProfileData] = useState<ProfileData | null>(null);
+  const [profileData, setProfileData] = useState<ProfileData | null>({
+    email: 'email',
+    id: 10,
+    name: 'string',
+    phone: '05012345678',
+    profile_picture: null,
+    registered_at: 10,
+    role: 'string',
+    surname: 'string',
+  });
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
   const [photo, setPhoto] = useState<PhotoProps>();
-  const [unreadNotificationCount, setUnreadNotificationCount] = useState(0);
   const [isChanged, setIsChanged] = useState(false);
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
 
-  const navigation = useNavigation();
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const globalStyles = stylesGlobal(colors);
 
   useEffect(() => {
     getAppTheme();
     (async () => {
-      await fetchProfile();
+      //await fetchProfile();
     })();
   }, []);
-
-  useFocusEffect(
-    useCallback(() => {
-      let isActive = true;
-
-      const fetchCount = async () => {
-        if (isActive) {
-          const count = await getUnreadNotificationCount();
-          setUnreadNotificationCount(count);
-        }
-      };
-
-      fetchCount();
-      return () => {
-        isActive = false;
-      };
-    }, []),
-  );
 
   const onToggleSwitch = async () => {
     await setAppTheme(!isDarkModeOn).then(() => {
@@ -117,7 +105,7 @@ export default function ProfilePage() {
     setIsChanged(false);
     const result = await setPicture(photo);
     if (result === true) {
-      Toast(I18N.t('profilePictureChangeMessage'), false);
+      Toast(I18N.t('profilePage.profilePictureChangeMessage'), false);
       await fetchProfile();
     } else {
       setProfilePictureUrl(profileData?.profile_picture ? profileData?.profile_picture : '');
@@ -125,23 +113,30 @@ export default function ProfilePage() {
     setShowLoading(false);
   }
 
+  const labelArray = [
+    { text: I18N.t('profilePage.email'), value: profileData?.email },
+    { text: I18N.t('profilePage.name'), value: profileData?.name },
+    { text: I18N.t('profilePage.surname'), value: profileData?.surname },
+    { text: I18N.t('profilePage.phone'), value: profileData?.phone },
+  ];
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.view}>
+      <ScrollView nestedScrollEnabled={true} keyboardShouldPersistTaps={'handled'}>
         <View style={styles.rightIcons}>
           <DefaultIcon
             color={'white'}
             name={'angle-double-right'}
-            onPressFunction={async () => await logout(navigation)}
+            onPressFunction={async () => await logout()}
           />
         </View>
         <View style={styles.leftIcons}>
           <DefaultIcon
             color={'white'}
             name={'envelope-o'}
-            onPressFunction={() => navigation.navigate('Notifications')}
+            onPressFunction={() => navigate('Notifications')}
           />
-          <Badge status="success" value={unreadNotificationCount} containerStyle={styles.badge} />
+          <Badge status="success" value={0} containerStyle={styles.badge} />
         </View>
 
         <View style={styles.imageView}>
@@ -166,44 +161,30 @@ export default function ProfilePage() {
           )}
         </View>
 
-        <View style={[styles.profileDataView, {backgroundColor: colors.background}]}>
+        <View style={[styles.profileDataView, { backgroundColor: colors.background }]}>
           {profileData !== null && (
-            <ScrollView nestedScrollEnabled={true}>
-              {getLabel(I18N.t('email'), profileData?.email, colors)}
+            <View>
+              {labelArray.map((label, index) => getLabel(label.text, label.value, colors, index))}
 
               <View style={globalStyles.rect} />
-              <View style={globalStyles.buttonMargin}>
-                <Button
-                  mode={'contained'}
-                  onPressFunction={() => navigation.navigate('FavoriteParks')}
-                  text={I18N.t('favoriteParks')}
-                />
-              </View>
+
               <View style={globalStyles.buttonMargin}>
                 <TextButton
-                  onPressFunction={() => navigation.navigate('Language', {page: 'Main'})}
-                  text={I18N.t('selectLanguage')}
+                  onPressFunction={() => navigate('Language', { page: 'Main' })}
+                  text={I18N.t('profilePage.selectLanguage')}
                 />
               </View>
 
-              <View style={[styles.theme, {borderColor: colors.border}]}>
-                <Text style={globalStyles.centerText}>{I18N.t('darkTheme')}</Text>
+              <View style={[styles.theme, { borderColor: colors.border }]}>
+                <Text style={globalStyles.centerText}>{I18N.t('profilePage.darkTheme')}</Text>
                 <Switch value={isDarkModeOn} onValueChange={onToggleSwitch} />
               </View>
-            </ScrollView>
+            </View>
           )}
 
           {(profileData === null || showLoading) && <ActivityIndicator />}
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
-
-/*
-
-{getLabel(I18N.t('name'), profileData?.name, colors)}
-{getLabel(I18N.t('surname'), profileData?.surname, colors)}
-{getLabel(I18N.t('phone'), profileData?.phone, colors)}
-
-*/

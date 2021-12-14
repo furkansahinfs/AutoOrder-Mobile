@@ -7,7 +7,7 @@ export type LanguageState = {
 
 export interface LanguageAddAction {
   type: typeof LANGUAGE_ADD;
-  payload: {language: string};
+  payload: { language: string };
 }
 
 export interface LanguageClearAction {

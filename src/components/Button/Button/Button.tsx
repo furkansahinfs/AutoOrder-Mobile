@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button as NativeButton} from 'react-native-paper';
+import { Button as NativeButton } from 'react-native-paper';
 import styles from './Button.styles';
-import {useTheme} from '../../../theme';
+import { useTheme } from '../../../theme';
 
 interface ButtonProps {
   onPressFunction: () => void;
@@ -9,13 +9,14 @@ interface ButtonProps {
   mode: 'text' | 'outlined' | 'contained';
 }
 
-const Button = ({onPressFunction, text, mode}: ButtonProps) => {
-  const {colors} = useTheme();
+const Button = ({ onPressFunction, text, mode }: ButtonProps) => {
+  const { colors } = useTheme();
   return (
     <NativeButton
-      style={[styles.button, {backgroundColor: colors.button}]}
+      style={[styles.button, { backgroundColor: colors.button }]}
       mode={mode}
-      onPress={onPressFunction}>
+      onPress={onPressFunction}
+    >
       {text}
     </NativeButton>
   );

@@ -1,10 +1,9 @@
-import {Dimensions, StyleSheet} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
-  bottomBar: {height: window.height * 0.08},
-  iconSize: {height: (window.height / window.width) * 13},
+  bottomBar: { height: scale(50) },
+  iconSize: { height: scale(23) },
 });
 
 export default styles;

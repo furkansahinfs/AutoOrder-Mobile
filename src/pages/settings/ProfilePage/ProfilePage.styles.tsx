@@ -1,6 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   badge: {
@@ -10,7 +9,7 @@ const styles = StyleSheet.create({
   },
 
   editIcon: {
-    top: window.height * 0.05,
+    top: scale(20),
   },
 
   icon: {
@@ -18,74 +17,72 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'white',
     borderColor: 'white',
-    borderWidth: 7,
-    borderRadius: (window.height / window.width) * 10,
+    borderWidth: scale(5),
+    borderRadius: scale(10),
   },
 
   image: {
-    width: window.width * 0.25,
-    height: window.height * 0.25,
+    width: scale(150),
+    height: scale(150),
     aspectRatio: 1,
     alignSelf: 'center',
     borderColor: 'white',
-    borderWidth: 5,
-    borderRadius: window.height * 0.1,
+    borderWidth: scale(5),
+    borderRadius: scale(40),
   },
 
   imageView: {
     alignSelf: 'center',
-    marginVertical: window.height * 0.025,
+    marginVertical: scale(23),
   },
 
   labelHead: {
     fontStyle: 'normal',
     fontWeight: 'normal',
-    fontSize: (window.height / window.width) * 7,
+    fontSize: scale(13),
   },
 
   labelInfo: {
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fontSize: (window.height / window.width) * 8,
+    fontSize: scale(11),
   },
 
   labelView: {
-    width: window.width * 0.75,
-    marginVertical: window.height * 0.005,
-    paddingVertical: window.height * 0.01,
-    paddingHorizontal: window.width * 0.05,
-  },
-
-  rightIcons: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-  },
-
-  profileDataView: {
-    height: '100%',
-    flex: 1,
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
-    paddingTop: window.height * 0.04,
-  },
-
-  saveIcon: {
-    bottom: window.height * 0.05,
+    width: '75%',
+    paddingVertical: scale(10),
+    paddingHorizontal: scale(30),
   },
 
   leftIcons: {
     position: 'absolute',
-    top: 10,
-    left: 10,
+    top: scale(10),
+    left: scale(10),
   },
+
+  rightIcons: {
+    position: 'absolute',
+    top: scale(10),
+    right: scale(10),
+  },
+
+  profileDataView: {
+    borderTopRightRadius: scale(30),
+    borderTopLeftRadius: scale(30),
+    paddingTop: scale(21),
+  },
+
+  saveIcon: {
+    bottom: scale(10),
+  },
+
   theme: {
     flexDirection: 'row',
     alignSelf: 'center',
     borderWidth: 0.5,
-    borderRadius: 10,
-    padding: 10,
-    marginVertical: window.height * 0.02,
+    borderRadius: scale(10),
+    padding: scale(10),
+    marginVertical: scale(20),
   },
 
   themeText: {
@@ -93,11 +90,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  view: {
-    width: window.width * 1,
-    height: '100%',
-    backgroundColor: '#3454fc',
-  },
   safeAreaView: {
     backgroundColor: '#3454fc',
     flex: 1,

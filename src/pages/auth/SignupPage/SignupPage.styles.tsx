@@ -1,6 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   mainView: {
@@ -8,13 +7,12 @@ const styles = StyleSheet.create({
   },
 
   welcomeText: {
-    marginTop: window.height * 0.01,
-    marginBottom: window.height * 0.04,
+    margin: scale(30),
     marginHorizontal: '6%',
   },
 
   welcomeTextView: {
-    marginVertical: window.height * 0.08,
+    marginVertical: scale(50),
   },
 });
 

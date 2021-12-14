@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-import {GetNotificationCount, LogoutRequest, ProfileInfo, ProfilePicture} from '../../../api';
-import {deleteUserCredentials, loadThemeToRedux, setTheme} from '../../../helpers';
-import {Toast} from '../../../components';
+import { LogoutRequest, ProfileInfo, ProfilePicture } from '../../../api';
+import { deleteUserCredentials, loadThemeToRedux, setTheme } from '../../../helpers';
+import { Toast } from '../../../components';
 import styles from './ProfilePage.styles';
-import {I18N} from '../../../locales';
+import { I18N } from '../../../locales';
+import { navigationReset } from '../../../navigation';
 
 export interface PhotoProps {
   uri: string;
@@ -16,28 +17,34 @@ export interface PhotoProps {
 /**
  * Remove the user credentials from the AsyncStorage
  * and redux, navigate user to the splash screen
- * @param navigation = useNavigation()
  */
-export async function logout(navigation: any) {
-  await LogoutRequest().then(async (result: any) => {
-    if (result === 'Successfull') {
+export async function logout() {
+  await deleteUserCredentials();
+  navigationReset('Splash');
+  /*await LogoutRequest().then(async (result: any) => {
+    if (result) {
       await deleteUserCredentials();
       navigation.reset({
         index: 0,
-        routes: [{name: 'Splash'}],
+        routes: [{ name: 'Splash' }],
       });
     } else {
       Toast(result, false);
     }
-  });
+  });*/
 }
 
-export function getLabel(labelHead: string, labelInfo: string | undefined | null, colors: any) {
+export function getLabel(
+  labelHead: string,
+  labelInfo: string | undefined | null,
+  colors: any,
+  index: number,
+) {
   return (
-    <View style={styles.labelView}>
-      <Text style={[styles.labelHead, {color: colors.text}]}>{labelHead}</Text>
-      <Text style={[styles.labelInfo, {color: colors.text}]}>
-        {labelInfo ? labelInfo : I18N.t('noInfo')}
+    <View style={styles.labelView} key={index}>
+      <Text style={[styles.labelHead, { color: colors.text }]}>{labelHead}</Text>
+      <Text style={[styles.labelInfo, { color: colors.text }]}>
+        {labelInfo ? labelInfo : I18N.t('profilePage.noInfo')}
       </Text>
     </View>
   );
@@ -49,14 +56,6 @@ export function getLabel(labelHead: string, labelInfo: string | undefined | null
  */
 export async function getProfileData() {
   return await ProfileInfo();
-}
-
-/**
- * Get unread notification count from api
- *
- */
-export async function getUnreadNotificationCount() {
-  return await GetNotificationCount();
 }
 
 /**

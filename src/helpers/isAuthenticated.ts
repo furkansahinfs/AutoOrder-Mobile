@@ -1,5 +1,5 @@
-import {getUserCredentials, TokenRefresher} from '../helpers';
-import {loadUserCredentialsToRedux} from './userCredentials';
+import { getUserCredentials, tokenRefresher } from '../helpers';
+import { loadUserCredentialsToRedux } from './userCredentials';
 
 /**
  * The function controls that is user authenticated or not,
@@ -12,12 +12,16 @@ async function isAuthenticated() {
   // get credentials from redux
   const userCredentials = getUserCredentials();
 
-  if (!userCredentials.refresh_token) {
+  //TODO
+
+  return true;
+  /*
+  if (!userCredentials.access_token) {
     return false;
   } else {
     // if is authenticated, refresh token
-    return await TokenRefresher();
-  }
+    return await tokenRefresher();
+  }*/
 }
 
 export default isAuthenticated;

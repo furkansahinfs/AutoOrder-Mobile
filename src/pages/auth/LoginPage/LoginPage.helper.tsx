@@ -1,7 +1,8 @@
-import {Toast} from '../../../components';
-import {I18N} from '../../../locales/language';
-import api, {LoginRequest} from '../../../api';
-import {loadUserCredentialsToRedux, setUserCredentials} from '../../../helpers';
+import { Toast } from '../../../components';
+import { I18N } from '../../../locales/language';
+import api, { LoginRequest } from '../../../api';
+import { loadUserCredentialsToRedux, setUserCredentials } from '../../../helpers';
+import { navigationReset } from '../../../navigation';
 
 /**
  * The function controls that given email and password to login are empty or not
@@ -13,11 +14,11 @@ import {loadUserCredentialsToRedux, setUserCredentials} from '../../../helpers';
 function validateLoginInputs(email: string, password: string) {
   let errorMessage = '';
   if (!email) {
-    errorMessage += I18N.t('emptyEmail') + '\n';
+    errorMessage += I18N.t('loginPage.emptyEmail') + '\n';
   }
 
   if (!password) {
-    errorMessage += I18N.t('emptyPassword') + '\n';
+    errorMessage += I18N.t('loginPage.emptyPassword') + '\n';
   }
 
   const isValidated = !errorMessage;
@@ -32,16 +33,15 @@ function validateLoginInputs(email: string, password: string) {
 
 interface ResponseProps {
   access_token: string;
-  refresh_token: string;
 }
 
 /**
- * The function saves the user credentials (refresh_token) to the keychain
- * @param response {access_token:"xxxx",refresh_token:"xxxx"}
+ * The function saves the user credentials (access_token) to the keychain
+ * @param response {access_token:"xxxx"}
  */
 async function saveUserCredentials(response: ResponseProps) {
   // Set the storage credentials to the keychain
-  await setUserCredentials(response.refresh_token);
+  await setUserCredentials(response.access_token);
   // Load credentials to the redux
   await loadUserCredentialsToRedux();
   // set access_token
@@ -55,19 +55,15 @@ async function saveUserCredentials(response: ResponseProps) {
  *
  * @param email : user email
  * @param password : user password
- * @param navigation : useNavigaiton()
  */
-export async function login(email: string, password: string, navigation: any) {
+export async function login(email: string, password: string) {
   if (validateLoginInputs(email, password)) {
     const response: any = await LoginRequest(email, password);
     if (!response?.access_token) {
       Toast(response, false);
     } else {
       await saveUserCredentials(response);
-      navigation.reset({
-        index: 0,
-        routes: [{name: 'Main'}],
-      });
+      navigationReset('Main');
     }
   }
 }

@@ -4,14 +4,14 @@ export const AUTH_CLEAR = 'auth/clear';
 export const AUTH_REMOVE_TOKEN = 'auth/removeToken';
 
 export type AuthState = {
-  refresh_token: string;
+  access_token: string;
   deviceid: string;
 };
 
 export interface AuthAddTokenAction {
   type: typeof AUTH_ADD_TOKEN;
   payload: {
-    refresh_token: string;
+    access_token: string;
   };
 }
 

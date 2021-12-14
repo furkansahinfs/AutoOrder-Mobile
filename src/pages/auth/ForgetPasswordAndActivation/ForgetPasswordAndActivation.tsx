@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import {View, ScrollView, Text, TouchableOpacity, SafeAreaView} from 'react-native';
-import {Card} from 'react-native-elements';
-import {BackButton, Button, TextInput} from '../../../components';
-import {I18N} from '../../../locales';
-import {send} from './ForgetPasswordAndActivation.helper';
+import React, { useState } from 'react';
+import { View, ScrollView, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import { Card } from 'react-native-elements';
+import { BackButton, Button, TextInput } from '../../../components';
+import { I18N } from '../../../locales';
+import { send } from './ForgetPasswordAndActivation.helper';
 import styles from './ForgetPasswordAndActivation.styles';
-import {stylesGlobal} from '../../../styles/';
-import {useTheme} from '../../../theme';
+import { stylesGlobal } from '../../../styles/';
+import { useTheme } from '../../../theme';
 
-export default function ForgetPassword({route}) {
+export default function ForgetPassword({ route }) {
   const [email, setEmail] = useState('');
   const [selectedTab, setSelectedTab] = useState(route.params.type);
 
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const globalStyles = stylesGlobal(colors);
 
   /**
@@ -38,26 +38,30 @@ export default function ForgetPassword({route}) {
   }
 
   return (
-    <SafeAreaView style={{backgroundColor: colors.background}}>
-      <View style={[styles.mainView, {backgroundColor: colors.background}]}>
-        <ScrollView nestedScrollEnabled={true}>
+    <SafeAreaView style={{ backgroundColor: colors.background }}>
+      <View style={[styles.mainView, { backgroundColor: colors.background }]}>
+        <ScrollView nestedScrollEnabled={true} keyboardShouldPersistTaps={'handled'}>
           <BackButton color={colors.icon} />
           <View style={styles.view}>
             {selectedTab === 'ForgetPassword' && (
               <View style={styles.welcomeText}>
                 <Text style={globalStyles.headText}>
-                  {I18N.t('forgetPasswordHead').toUpperCase()}
+                  {I18N.t('forgetPasswordAndActiovationPage.forgetPasswordHead').toUpperCase()}
                 </Text>
-                <Text style={globalStyles.bodyText}>{I18N.t('forgetPasswordBody')}</Text>
+                <Text style={globalStyles.bodyText}>
+                  {I18N.t('forgetPasswordAndActiovationPage.forgetPasswordBody')}
+                </Text>
               </View>
             )}
 
             {selectedTab === 'NewActivationMail' && (
               <View style={styles.welcomeText}>
                 <Text style={globalStyles.headText}>
-                  {I18N.t('newActivationHead').toUpperCase()}
+                  {I18N.t('forgetPasswordAndActiovationPage.newActivationHead').toUpperCase()}
                 </Text>
-                <Text style={globalStyles.bodyText}>{I18N.t('newActivationBody')}</Text>
+                <Text style={globalStyles.bodyText}>
+                  {I18N.t('forgetPasswordAndActiovationPage.newActivationBody')}
+                </Text>
               </View>
             )}
 
@@ -65,21 +69,27 @@ export default function ForgetPassword({route}) {
               <View style={globalStyles.tabStyles}>
                 <TouchableOpacity
                   style={getTabStyle('ForgetPassword')}
-                  onPress={() => setSelectedTab('ForgetPassword')}>
-                  <Text style={getTextStyle('ForgetPassword')}>{I18N.t('forgetPassword')}</Text>
+                  onPress={() => setSelectedTab('ForgetPassword')}
+                >
+                  <Text style={getTextStyle('ForgetPassword')}>
+                    {I18N.t('forgetPasswordAndActiovationPage.forgetPassword')}
+                  </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={getTabStyle('NewActivationMail')}
-                  onPress={() => setSelectedTab('NewActivationMail')}>
-                  <Text style={getTextStyle('NewActivationMail')}>{I18N.t('newActivation')}</Text>
+                  onPress={() => setSelectedTab('NewActivationMail')}
+                >
+                  <Text style={getTextStyle('NewActivationMail')}>
+                    {I18N.t('forgetPasswordAndActiovationPage.newActivation')}
+                  </Text>
                 </TouchableOpacity>
               </View>
               <View>
                 <TextInput
-                  func={value => setEmail(value)}
+                  func={(value) => setEmail(value)}
                   iconName={'envelope'}
                   keyboardType={'default'}
-                  placeholderText={I18N.t('email')}
+                  placeholderText={I18N.t('forgetPasswordAndActiovationPage.email')}
                   secureText={false}
                   val={email}
                 />
@@ -88,7 +98,7 @@ export default function ForgetPassword({route}) {
                   <Button
                     mode={'contained'}
                     onPressFunction={async () => await send(email, selectedTab)}
-                    text={I18N.t('send')}
+                    text={I18N.t('forgetPasswordAndActiovationPage.send')}
                   />
                 </View>
               </View>

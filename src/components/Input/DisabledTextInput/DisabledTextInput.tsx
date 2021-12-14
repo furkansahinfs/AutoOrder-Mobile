@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput as NativeTextInput} from 'react-native-paper';
+import { TextInput as NativeTextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from './DisabledTextInput.styles';
 
@@ -9,7 +9,7 @@ interface TextInputProps {
   iconName: string;
 }
 
-const TextInput = ({placeholderText, val, iconName}: TextInputProps) => {
+const TextInput = ({ placeholderText, val, iconName }: TextInputProps) => {
   return (
     <NativeTextInput
       mode="outlined"

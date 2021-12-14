@@ -13,13 +13,14 @@ const profilePicture = async (photo: PhotoProps) => {
 
   return await api
     .PUT(path, body, {
-      headers: {'Content-Type': 'multipart/form-data'},
+      headers: { 'Content-Type': 'multipart/form-data' },
     })
     .then((result: any) => {
-      if (result.data.url) {
+      if (result.status === 200) {
         return true;
+      } else {
+        return false;
       }
-      return false;
     });
 };
 

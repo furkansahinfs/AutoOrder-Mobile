@@ -1,6 +1,6 @@
-import {LanguageAction, LanguageState, LANGUAGE_ADD, LANGUAGE_CLEAR} from './language.types';
+import { LanguageAction, LanguageState, LANGUAGE_ADD, LANGUAGE_CLEAR } from './language.types';
 
-const initialState: LanguageState = {language: ''};
+const initialState: LanguageState = { language: '' };
 
 export default function languageReducer(
   state = initialState,
@@ -8,9 +8,9 @@ export default function languageReducer(
 ): LanguageState {
   switch (action.type) {
     case LANGUAGE_CLEAR:
-      return {...initialState};
+      return { ...initialState };
     case LANGUAGE_ADD:
-      return {...state, ...action.payload};
+      return { ...state, ...action.payload };
     default:
       return state;
   }

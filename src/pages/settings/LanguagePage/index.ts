@@ -1,1 +1,1 @@
-export {default as LanguagePage} from './LanguagePage';
+export { default as LanguagePage } from './LanguagePage';

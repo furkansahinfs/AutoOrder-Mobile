@@ -1,4 +1,2 @@
-export {LanguagePage} from './LanguagePage';
-export {NotificationPage} from './NotificationPage';
-export {NotificationsPage} from './NotificationsPage';
-export {ProfilePage} from './ProfilePage';
+export { LanguagePage } from './LanguagePage';
+export { ProfilePage } from './ProfilePage';

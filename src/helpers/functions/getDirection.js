@@ -1,4 +1,4 @@
-import {Linking, Platform} from 'react-native';
+import { Linking, Platform } from 'react-native';
 
 /**
  * The function provides to get a direction to the given location
@@ -11,7 +11,7 @@ function getDirection(latitude, longitude) {
       Linking.openURL('http://maps.apple.com/?daddr=' + latitude + ',' + longitude);
     },
     android: () => {
-      Linking.openURL('http://maps.google.com/?daddr=' + latitude + ',' + longitude).catch(err =>
+      Linking.openURL('http://maps.google.com/?daddr=' + latitude + ',' + longitude).catch((err) =>
         console.error('An error occurred', err),
       );
     },

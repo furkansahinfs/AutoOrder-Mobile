@@ -1,29 +1,28 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const window = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const makeStyles = (colors: any) =>
   StyleSheet.create({
     bodyText: {
       fontStyle: 'normal',
       fontWeight: 'normal',
-      fontSize: (window.height / window.width) * 9,
+      fontSize: scale(14),
       color: colors.text,
     },
 
     buttonMargin: {
-      marginTop: window.height * 0.03,
+      marginTop: scale(10),
     },
 
     card: {
       backgroundColor: colors.card,
       justifyContent: 'center',
-      paddingVertical: '12%',
-      borderRadius: 15,
+      paddingVertical: '10%',
+      borderRadius: scale(15),
       shadowColor: 'grey',
       shadowOffset: {
         width: 0,
-        height: 3,
+        height: scale(3),
       },
       elevation: 20,
       zIndex: 1,
@@ -42,12 +41,12 @@ const makeStyles = (colors: any) =>
       alignSelf: 'center',
       padding: '5%',
       marginVertical: '4%',
-      borderRadius: 30,
+      borderRadius: scale(30),
       borderWidth: 1,
       borderColor: colors.text,
       shadowOffset: {
         width: 0,
-        height: 3,
+        height: scale(3),
       },
       elevation: 10,
       zIndex: 1,
@@ -61,31 +60,31 @@ const makeStyles = (colors: any) =>
     headText: {
       fontStyle: 'normal',
       fontWeight: 'bold',
-      fontSize: (window.height / window.width) * 14,
+      fontSize: scale(20),
       color: colors.text,
     },
 
     iconSize: {
-      height: (window.height / window.width) * 12,
+      height: scale(15),
     },
 
     labelSmaller: {
       fontStyle: 'italic',
       fontWeight: 'normal',
-      fontSize: (window.height / window.width) * 7,
+      fontSize: scale(12),
       color: colors.text,
     },
 
     labelBigger: {
       fontStyle: 'normal',
       fontWeight: 'normal',
-      fontSize: (window.height / window.width) * 8,
+      fontSize: scale(15),
       color: colors.text,
     },
 
     modalView: {
       backgroundColor: colors.card,
-      padding: window.width * 0.05,
+      padding: scale(5),
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -97,7 +96,7 @@ const makeStyles = (colors: any) =>
 
     rect: {
       marginVertical: '1%',
-      height: 1,
+      height: scale(1),
       backgroundColor: '#C6C6C6',
     },
 
@@ -121,13 +120,13 @@ const makeStyles = (colors: any) =>
 
     tabStyles: {
       flexDirection: 'row',
-      marginBottom: window.height * 0.04,
+      marginBottom: scale(15),
     },
 
     titleDisabled: {
       alignItems: 'center',
       alignContent: 'center',
-      fontSize: (window.height / window.width) * 8,
+      fontSize: scale(13),
       color: colors.text,
     },
 
@@ -135,7 +134,7 @@ const makeStyles = (colors: any) =>
       alignItems: 'center',
       alignContent: 'center',
       fontWeight: 'bold',
-      fontSize: (window.height / window.width) * 8,
+      fontSize: scale(13),
       color: '#7999FD',
     },
   });

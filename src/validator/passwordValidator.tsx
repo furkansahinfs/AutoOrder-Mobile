@@ -1,5 +1,5 @@
 import ValidationResult from './validationResult';
-import {I18N} from '../locales/language';
+import { I18N } from '../locales/language';
 
 /**
  * The function tries to validate password and return result

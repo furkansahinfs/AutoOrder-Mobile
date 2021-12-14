@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import store from '../store';
-import {lightOn, darkOn} from '../store/theme';
+import { lightOn, darkOn } from '../store/theme';
 
 /**
  * Get the theme from Redux

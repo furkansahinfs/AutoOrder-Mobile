@@ -3,12 +3,10 @@ import {
   ForgetPasswordAndActivationPage,
   LanguagePage,
   LoginPage,
-  NotificationPage,
-  NotificationsPage,
   SignupPage,
   SplashPage,
 } from '../pages';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import TabNavigation from './TabNavigation';
 
@@ -24,8 +22,6 @@ function MyStack() {
       <Stack.Screen name="Language" component={LanguagePage} />
       <Stack.Screen name="Login" component={LoginPage} />
       <Stack.Screen name="Main" component={TabNavigation} />
-      <Stack.Screen name="Notification" component={NotificationPage} />
-      <Stack.Screen name="Notifications" component={NotificationsPage} />
       <Stack.Screen name="Signup" component={SignupPage} />
       <Stack.Screen name="Splash" component={SplashPage} />
     </Stack.Navigator>

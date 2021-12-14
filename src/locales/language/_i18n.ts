@@ -1,5 +1,5 @@
 import I18n from 'i18n-js';
-import {I18nManager} from 'react-native';
+import { I18nManager } from 'react-native';
 import tr from './tr';
 import en from './en';
 
