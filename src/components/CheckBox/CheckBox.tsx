@@ -7,15 +7,16 @@ interface CheckboxProps {
   onPressFunction: () => void;
   checked: boolean;
   title: string;
+  widthFit?: boolean;
 }
 
-const CheckBox = ({ onPressFunction, checked, title }: CheckboxProps) => {
+const CheckBox = ({ onPressFunction, checked, title, widthFit }: CheckboxProps) => {
   const { colors } = useTheme();
   return (
     <NativeCheckBox
       title={title}
       textStyle={{ color: colors.text }}
-      containerStyle={styles.box}
+      containerStyle={[styles.box, widthFit ? {} : styles.widthAll]}
       checked={checked}
       onPress={onPressFunction}
     />

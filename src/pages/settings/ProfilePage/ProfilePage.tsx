@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { Switch } from 'react-native-paper';
 import { DocumentPickerResponse } from 'react-native-document-picker';
-import { Badge } from 'react-native-elements';
 import { getTheme } from '../../../helpers';
 import { ActivityIndicator, DefaultIcon, TextButton, Toast } from '../../../components';
 import { I18N } from '../../../locales';
@@ -122,67 +121,69 @@ export default function ProfilePage() {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView nestedScrollEnabled={true} keyboardShouldPersistTaps={'handled'}>
-        <View style={styles.rightIcons}>
-          <DefaultIcon
-            color={'white'}
-            name={'angle-double-right'}
-            onPressFunction={async () => await logout()}
-          />
-        </View>
-        <View style={styles.leftIcons}>
-          <DefaultIcon
-            color={'white'}
-            name={'envelope-o'}
-            onPressFunction={() => navigate('Notifications')}
-          />
-          <Badge status="success" value={0} containerStyle={styles.badge} />
-        </View>
-
-        <View style={styles.imageView}>
-          <View style={[styles.icon, styles.editIcon]}>
-            <DefaultIcon color={'black'} name={'camera'} onPressFunction={pick} />
+      <ScrollView
+        nestedScrollEnabled={true}
+        keyboardShouldPersistTaps={'handled'}
+        contentContainerStyle={styles.safeAreaView}
+      >
+        <View style={styles.safeAreaView}>
+          <View style={styles.rightIcons}>
+            <DefaultIcon
+              color={'white'}
+              name={'angle-double-right'}
+              onPressFunction={async () => await logout()}
+            />
           </View>
 
-          <Image
-            style={styles.image}
-            source={
-              profilePictureUrl
-                ? {
-                    uri: profilePictureUrl,
-                  }
-                : Images.defaultProfilePicture
-            }
-          />
-          {isChanged && (
-            <View style={[styles.icon, styles.saveIcon]}>
-              <DefaultIcon color={'black'} name={'cloud-upload'} onPressFunction={save} />
+          <View style={styles.imageView}>
+            <View style={[styles.icon, styles.editIcon]}>
+              <DefaultIcon color={'black'} name={'camera'} onPressFunction={pick} />
             </View>
-          )}
-        </View>
 
-        <View style={[styles.profileDataView, { backgroundColor: colors.background }]}>
-          {profileData !== null && (
-            <View>
-              {labelArray.map((label, index) => getLabel(label.text, label.value, colors, index))}
-
-              <View style={globalStyles.rect} />
-
-              <View style={globalStyles.buttonMargin}>
-                <TextButton
-                  onPressFunction={() => navigate('Language', { page: 'Main' })}
-                  text={I18N.t('profilePage.selectLanguage')}
-                />
+            <Image
+              style={styles.image}
+              source={
+                profilePictureUrl
+                  ? {
+                      uri: profilePictureUrl,
+                    }
+                  : Images.defaultProfilePicture
+              }
+            />
+            {isChanged && (
+              <View style={[styles.icon, styles.saveIcon]}>
+                <DefaultIcon color={'black'} name={'cloud-upload'} onPressFunction={save} />
               </View>
+            )}
+          </View>
 
-              <View style={[styles.theme, { borderColor: colors.border }]}>
-                <Text style={globalStyles.centerText}>{I18N.t('profilePage.darkTheme')}</Text>
-                <Switch value={isDarkModeOn} onValueChange={onToggleSwitch} />
+          <View style={[styles.profileDataView, { backgroundColor: colors.background }]}>
+            {profileData !== null && (
+              <View>
+                {labelArray.map((label, index) => getLabel(label.text, label.value, colors, index))}
+
+                <View style={globalStyles.rect} />
+
+                <View style={globalStyles.buttonMargin}>
+                  <TextButton
+                    onPressFunction={() => navigate('Language', { page: 'Main' })}
+                    text={I18N.t('profilePage.selectLanguage')}
+                  />
+                </View>
+
+                <View style={globalStyles.buttonMargin}>
+                  <TextButton onPressFunction={() => navigate('Configuration')} text={'Conf'} />
+                </View>
+
+                <View style={[styles.theme, { borderColor: colors.border }]}>
+                  <Text style={globalStyles.centerText}>{I18N.t('profilePage.darkTheme')}</Text>
+                  <Switch value={isDarkModeOn} onValueChange={onToggleSwitch} />
+                </View>
               </View>
-            </View>
-          )}
+            )}
 
-          {(profileData === null || showLoading) && <ActivityIndicator />}
+            {(profileData === null || showLoading) && <ActivityIndicator />}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

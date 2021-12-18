@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 
   imageView: {
     alignSelf: 'center',
-    marginVertical: scale(20),
+    marginVertical: scale(23),
   },
 
   labelHead: {
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   },
 
   profileDataView: {
-    flexGrow: 1,
     borderTopRightRadius: scale(30),
     borderTopLeftRadius: scale(30),
     paddingTop: scale(21),
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
   },
 
   safeAreaView: {
-    backgroundColor: '#3454fc',
+    backgroundColor: 'white',
     flex: 1,
   },
 });

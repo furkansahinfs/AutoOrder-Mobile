@@ -2,20 +2,17 @@ import api from '../../index';
 
 interface SignupProps {
   email: string;
-  name: string | null;
+  name: string;
   password: string;
-  phone: string | null;
-  surname: string | null;
+  surname: string;
 }
 
-const register = async ({ email, name, password, phone, surname }: SignupProps) => {
+const register = async ({ email, name, password, surname }: SignupProps) => {
   const path = '/auth/register';
   const json = {
     email: email,
-    name: name,
+    fullName: name + ' ' + surname,
     password: password,
-    phone: phone === '' ? null : phone,
-    surname: surname,
   };
   return await api.POST(path, json, {}).then((result: any) => {
     if (result.status === 200) {
