@@ -16,7 +16,7 @@ const CheckBox = ({ onPressFunction, checked, title, widthFit }: CheckboxProps) 
     <NativeCheckBox
       title={title}
       textStyle={{ color: colors.text }}
-      containerStyle={[styles.box, widthFit ? {} : styles.widthAll]}
+      containerStyle={[styles.box, { borderColor: colors.border }, widthFit ? {} : styles.widthAll]}
       checked={checked}
       onPress={onPressFunction}
     />

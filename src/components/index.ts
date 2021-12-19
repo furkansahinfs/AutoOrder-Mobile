@@ -3,6 +3,7 @@ export { BackButton, Button, TextButton } from './Button';
 export { CheckBox } from './CheckBox';
 export { ImageSelector } from './DocumentSelect';
 export { DropdownMenu } from './Dropdown';
+export { Header } from './Header';
 export { DefaultIcon } from './Icon/DefaultIcon';
 export { Icon } from './Icon';
 export { DisabledTextInput, TextInput } from './Input';

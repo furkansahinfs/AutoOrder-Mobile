@@ -1,60 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import { Header } from '../../../components';
+import { I18N } from '../../../locales';
+import { navigate } from '../../../navigation';
+import { useTheme } from '../../../theme';
 import styles from './ConfigurationPage.styles';
 
-export default function ConfigurationPage() {
-  const [backShelfChoices, setBackShelfChoices] = useState<Array<any>>([]);
-  const [backShelfItems, setBackShelfItems] = useState<Array<any>>([
-    { name: 'Milk', size: '1X', type: 'Back' },
-    { name: 'Juice', size: '1X', type: 'Back' },
-    { name: 'Yoghurt', size: '3X', type: 'Back' },
-    { name: 'Butterfly', size: '2X', type: 'Back' },
-    { name: 'Jam', size: '2X', type: 'Back' },
-    { name: 'AAAAAAA', size: '1X', type: 'Back' },
-    { name: 'BBBBBB', size: '1X', type: 'Back' },
-    { name: 'CCCCCC', size: '3X', type: 'Back' },
-    { name: 'DDDDDD', size: '2X', type: 'Back' },
-    { name: 'EEEEEE', size: '2X', type: 'Back' },
-  ]);
-  const [frontShelfChoices, setFrontShelfChoices] = useState<Array<any>>([]);
-  const [frontShelfItems, setFrontShelfItems] = useState<Array<any>>([
-    { name: 'Egg', size: '2X', type: 'Front' },
-    { name: 'Cheese', size: '2X', type: 'Front' },
-    { name: 'Chocolate', size: '1X', type: 'Front' },
-    { name: 'Olive', size: '1X', type: 'Front' },
-    { name: 'Tomato Paste', size: '1X', type: 'Front' },
-  ]);
-
+const ConfigurationPage = () => {
+  const { colors } = useTheme();
   useEffect(() => {
     (async () => {
       //await fetchProfile();
     })();
-  }, [backShelfChoices]);
+  }, []);
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView nestedScrollEnabled={true} keyboardShouldPersistTaps={'handled'} />
-      <View>
-        <DropdownMenu
-          choices={backShelfItems}
-          currentChoice={backShelfChoices}
-          setChoice={setBackShelfChoices}
-          multipleChoice={true}
-          dropdownTitle={'Select Back Shelf Items'}
-          itemKey={'name'}
-          titleKey={'name'}
-        />
+    <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background }]}>
+      <Header back={true} title={I18N.t('configurationPage.header')} />
+      <View style={styles.view}>
+        <TouchableOpacity
+          onPress={() => navigate('ShelfConfiguration', { shelfType: 'Back' })}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={[styles.touchableText, { backgroundColor: 'lightblue' }]}
+        >
+          <Text style={styles.text}>{I18N.t('configurationPage.backShelf')}</Text>
+        </TouchableOpacity>
 
-        <DropdownMenu
-          choices={frontShelfItems}
-          currentChoice={frontShelfChoices}
-          setChoice={setFrontShelfChoices}
-          multipleChoice={true}
-          dropdownTitle={'Select Front Shelf Items'}
-          itemKey={'name'}
-          titleKey={'name'}
-        />
+        <TouchableOpacity
+          onPress={() => navigate('ShelfConfiguration', { shelfType: 'Front' })}
+          style={[styles.touchableText]}
+        >
+          <Text style={styles.text}>{I18N.t('configurationPage.frontShelf')}</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
-}
+};
+export default ConfigurationPage;

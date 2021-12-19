@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MainPage, ProfilePage } from '../pages';
+import { ConfigurationPage, MainPage, ProfilePage } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './TabNavigation.style';
@@ -36,6 +36,20 @@ function MainPageTabs() {
         }}
       />
       <Tab.Screen
+        name="Configuration"
+        component={ConfigurationPage}
+        listeners={({ navigation }) => ({
+          blur: () => navigation.setParams({ screen: undefined }),
+        })}
+        options={{
+          unmountOnBlur: true,
+          tabBarLabel: I18N.t('tabbar.configuration'),
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="tools" color={color} size={styles.iconSize.height} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Profile"
         component={ProfilePage}
         listeners={({ navigation }) => ({
@@ -45,7 +59,11 @@ function MainPageTabs() {
           unmountOnBlur: true,
           tabBarLabel: I18N.t('tabbar.profile'),
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={styles.iconSize.height} />
+            <MaterialCommunityIcons
+              name="account-settings"
+              color={color}
+              size={styles.iconSize.height}
+            />
           ),
         }}
       />

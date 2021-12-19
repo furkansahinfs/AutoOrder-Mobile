@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { adjust } from './LanguagePage.helper';
 import styles from './LanguagePage.styles';
 
-export default function LanguagePage({ route }) {
+const LanguagePage = ({ route }) => {
   const page = route.params.page;
   const navigation = useNavigation();
 
@@ -28,4 +28,5 @@ export default function LanguagePage({ route }) {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+export default LanguagePage;

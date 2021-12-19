@@ -11,7 +11,7 @@ import styles from './SplashPage.styles';
 import OneSignal from 'react-native-onesignal';
 import { NotificationEntity } from '../../../assets/interfaces';
 
-export default function SplashPage() {
+const SplashPage = () => {
   let isAuth = false;
   let hasSelectedLang = false;
   let loadMain = false;
@@ -113,4 +113,5 @@ export default function SplashPage() {
       <Text style={styles.headText}>Template</Text>
     </View>
   );
-}
+};
+export default SplashPage;

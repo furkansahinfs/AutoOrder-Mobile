@@ -2,96 +2,36 @@ import { StyleSheet } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
-  badge: {
-    position: 'absolute',
-    top: -4,
-    right: -4,
-  },
-
-  editIcon: {
-    top: scale(20),
-  },
-
-  icon: {
-    zIndex: 1,
-    width: '100%',
-    backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: scale(5),
-    borderRadius: scale(10),
-  },
-
-  image: {
-    width: scale(150),
-    height: scale(150),
-    aspectRatio: 1,
-    alignSelf: 'center',
-    borderColor: 'white',
-    borderWidth: scale(5),
-    borderRadius: scale(40),
-  },
-
-  imageView: {
-    alignSelf: 'center',
-    marginVertical: scale(23),
-  },
-
-  labelHead: {
-    fontStyle: 'normal',
+  text: {
+    fontSize: scale(30),
     fontWeight: 'normal',
-    fontSize: scale(13),
+    color: 'black',
   },
-
-  labelInfo: {
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    fontSize: scale(11),
-  },
-
-  labelView: {
-    width: '75%',
-    paddingVertical: scale(10),
-    paddingHorizontal: scale(30),
-  },
-
-  leftIcons: {
-    position: 'absolute',
-    top: scale(10),
-    left: scale(10),
-  },
-
-  rightIcons: {
-    position: 'absolute',
-    top: scale(10),
-    right: scale(10),
-  },
-
-  profileDataView: {
-    borderTopRightRadius: scale(30),
-    borderTopLeftRadius: scale(30),
-    paddingTop: scale(21),
-  },
-
-  saveIcon: {
-    bottom: scale(10),
-  },
-
-  theme: {
-    flexDirection: 'row',
-    alignSelf: 'center',
-    borderWidth: 0.5,
-    borderRadius: scale(10),
-    padding: scale(10),
-    marginVertical: scale(20),
-  },
-
-  themeText: {
-    textAlignVertical: 'center',
-    fontWeight: 'bold',
+  touchableText: {
+    height: '30%',
+    borderRadius: scale(30),
+    margin: '5%',
+    backgroundColor: 'darkorange',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 0,
+      height: scale(10),
+    },
+    elevation: scale(10),
+    zIndex: 1,
+    shadowOpacity: 0.8,
   },
 
   safeAreaView: {
-    backgroundColor: 'white',
+    flex: 1,
+  },
+
+  view: {
+    alignContent: 'center',
+    justifyContent: 'center',
     flex: 1,
   },
 });

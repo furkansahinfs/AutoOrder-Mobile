@@ -9,7 +9,7 @@ import styles from './SignupPage.styles';
 import { stylesGlobal } from '../../../styles/';
 import { useTheme } from '../../../theme';
 
-export default function SignupPage() {
+const SignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -88,8 +88,9 @@ export default function SignupPage() {
       </View>
     </SafeAreaView>
   );
-}
+};
 
+export default SignupPage;
 //const [isInfoPage, setIsInfoPage] = useState(false);
 //const [name, setName] = useState('');
 //const [surname, setSurname] = useState('');

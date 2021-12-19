@@ -50,7 +50,7 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
           onPressFunction={() => setFileUri(null)}
           text={'Delete'}
           widthFit={true}
-          hasMarginTop={true}
+          hasMarginVertical={true}
         />
       </View>
     );
@@ -68,7 +68,7 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
               onPressFunction={async () => await launchCamera()}
               text={'Camera'}
               widthFit={true}
-              hasMarginTop={true}
+              hasMarginVertical={true}
             />
 
             <Button
@@ -76,7 +76,7 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
               onPressFunction={async () => await launchImageLibrary()}
               text={'Gallery'}
               widthFit={true}
-              hasMarginTop={true}
+              hasMarginVertical={true}
             />
           </View>
         </View>

@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     borderRadius: scale(10),
     paddingHorizontal: scale(2),
   },
-  marginTop: {
-    marginTop: scale(3),
+  marginVertical: {
+    marginVertical: scale(5),
   },
   width: {
     width: '70%',

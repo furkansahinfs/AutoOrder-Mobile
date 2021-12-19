@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     borderRadius: scale(30),
   },
   iconStyle: {
-    height: scale(15),
+    height: scale(20),
   },
 });
 

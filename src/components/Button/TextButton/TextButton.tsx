@@ -7,12 +7,22 @@ import { useTheme } from '../../../theme';
 interface ButtonProps {
   onPressFunction: () => void;
   text: string;
+  hasMarginVertical?: boolean;
+  widthFit?: boolean;
 }
 
-const TextButton = ({ onPressFunction, text }: ButtonProps) => {
+const TextButton = ({ onPressFunction, text, hasMarginVertical, widthFit }: ButtonProps) => {
   const { colors } = useTheme();
   return (
-    <Button style={styles.buttonText} mode="text" onPress={onPressFunction}>
+    <Button
+      style={[
+        styles.buttonText,
+        hasMarginVertical ? styles.marginVertical : {},
+        !widthFit ? styles.width : {},
+      ]}
+      mode="text"
+      onPress={onPressFunction}
+    >
       <Text style={{ color: colors.text }}>{text}</Text>
     </Button>
   );

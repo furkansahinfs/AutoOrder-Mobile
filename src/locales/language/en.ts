@@ -1,4 +1,12 @@
 const en = {
+  configurationPage: {
+    backShelf: 'Back Shelf',
+    frontShelf: 'Front Shelf',
+    header: 'Configuration',
+  },
+  dropdownMenu: {
+    noChoice: 'No Choice',
+  },
   forgetPasswordAndActiovationPage: {
     email: 'Email',
     emptyEmail: 'Email cannot be empty.',
@@ -36,6 +44,14 @@ const en = {
     profilePictureChangeMessage: 'Profile picture is changed.',
     selectLanguage: 'Select Language',
     surname: 'Surname',
+  },
+  shelfConfigurationPage: {
+    adjustConfiguration: 'Adjust Configuration',
+    header: 'Shelf Configuration',
+    noData: 'There is no configuration data',
+    selectShelfItems: 'Select Shelf Items',
+    size: 'Item Size',
+    totalSize: 'Total Size',
   },
   signupPage: {
     back: 'Back',

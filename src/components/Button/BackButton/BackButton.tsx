@@ -12,8 +12,8 @@ const BackButton = ({ color }: BackButtonProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-      <Icon name="arrow-left" size={styles.iconSize.height} color={color} />
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+      <Icon name="angle-left" size={styles.iconSize.height} color={color} />
     </TouchableOpacity>
   );
 };

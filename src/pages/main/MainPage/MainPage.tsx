@@ -3,7 +3,7 @@ import { SafeAreaView, View } from 'react-native';
 import { ImageSelector } from '../../../components';
 import styles from './MainPage.styles';
 
-export default function MainPage() {
+const MainPage = () => {
   const [fileUri, setFileUri] = useState<string | null>(null);
 
   return (
@@ -13,4 +13,5 @@ export default function MainPage() {
       </View>
     </SafeAreaView>
   );
-}
+};
+export default MainPage;

@@ -2,6 +2,7 @@ const MyDefaultTheme = {
   dark: false,
   colors: {
     background: '#f7f7f7',
+    background2: '#eff3f4',
     border: '#858585',
     button: '#3454fc',
     card: '#ffffff',
@@ -24,6 +25,7 @@ const MyDarkTheme = {
   dark: true,
   colors: {
     background: '#000000',
+    background2: '#000000',
     border: '#ffffff',
     button: '#3454fc',
     card: '#0a0a0a',

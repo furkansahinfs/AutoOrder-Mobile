@@ -7,17 +7,17 @@ interface ButtonProps {
   onPressFunction: () => void;
   text: string;
   mode: 'text' | 'outlined' | 'contained';
-  hasMarginTop?: boolean;
+  hasMarginVertical?: boolean;
   widthFit?: boolean;
 }
 
-const Button = ({ onPressFunction, text, mode, hasMarginTop, widthFit }: ButtonProps) => {
+const Button = ({ onPressFunction, text, mode, hasMarginVertical, widthFit }: ButtonProps) => {
   const { colors } = useTheme();
   return (
     <NativeButton
       style={[
         styles.button,
-        hasMarginTop ? styles.marginTop : {},
+        hasMarginVertical ? styles.marginVertical : {},
         !widthFit ? styles.width : {},
         { backgroundColor: colors.button },
       ]}

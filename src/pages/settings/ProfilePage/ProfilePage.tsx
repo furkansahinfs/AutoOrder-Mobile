@@ -25,7 +25,7 @@ import { navigate } from '../../../navigation';
 //TODO Refactoring
 //TODO Refactoring
 
-export default function ProfilePage() {
+const ProfilePage = () => {
   const [profileData, setProfileData] = useState<ProfileData | null>({
     email: 'email',
     id: 10,
@@ -120,41 +120,43 @@ export default function ProfilePage() {
   ];
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background }]}>
       <ScrollView
         nestedScrollEnabled={true}
         keyboardShouldPersistTaps={'handled'}
-        contentContainerStyle={styles.safeAreaView}
+        style={styles.scrollView}
       >
-        <View style={styles.safeAreaView}>
-          <View style={styles.rightIcons}>
-            <DefaultIcon
-              color={'white'}
-              name={'angle-double-right'}
-              onPressFunction={async () => await logout()}
-            />
-          </View>
-
-          <View style={styles.imageView}>
-            <View style={[styles.icon, styles.editIcon]}>
-              <DefaultIcon color={'black'} name={'camera'} onPressFunction={pick} />
+        <View>
+          <View style={styles.topView}>
+            <View style={styles.rightIcons}>
+              <DefaultIcon
+                color={'white'}
+                name={'angle-double-right'}
+                onPressFunction={async () => await logout()}
+              />
             </View>
 
-            <Image
-              style={styles.image}
-              source={
-                profilePictureUrl
-                  ? {
-                      uri: profilePictureUrl,
-                    }
-                  : Images.defaultProfilePicture
-              }
-            />
-            {isChanged && (
-              <View style={[styles.icon, styles.saveIcon]}>
-                <DefaultIcon color={'black'} name={'cloud-upload'} onPressFunction={save} />
+            <View style={styles.imageView}>
+              <View style={[styles.icon, styles.editIcon]}>
+                <DefaultIcon color={'black'} name={'camera'} onPressFunction={pick} />
               </View>
-            )}
+
+              <Image
+                style={styles.image}
+                source={
+                  profilePictureUrl
+                    ? {
+                        uri: profilePictureUrl,
+                      }
+                    : Images.defaultProfilePicture
+                }
+              />
+              {isChanged && (
+                <View style={[styles.icon, styles.saveIcon]}>
+                  <DefaultIcon color={'black'} name={'cloud-upload'} onPressFunction={save} />
+                </View>
+              )}
+            </View>
           </View>
 
           <View style={[styles.profileDataView, { backgroundColor: colors.background }]}>
@@ -163,16 +165,11 @@ export default function ProfilePage() {
                 {labelArray.map((label, index) => getLabel(label.text, label.value, colors, index))}
 
                 <View style={globalStyles.rect} />
-
                 <View style={globalStyles.buttonMargin}>
                   <TextButton
                     onPressFunction={() => navigate('Language', { page: 'Main' })}
                     text={I18N.t('profilePage.selectLanguage')}
                   />
-                </View>
-
-                <View style={globalStyles.buttonMargin}>
-                  <TextButton onPressFunction={() => navigate('Configuration')} text={'Conf'} />
                 </View>
 
                 <View style={[styles.theme, { borderColor: colors.border }]}>
@@ -188,4 +185,5 @@ export default function ProfilePage() {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+export default ProfilePage;

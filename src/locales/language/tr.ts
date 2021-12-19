@@ -1,4 +1,13 @@
 const tr = {
+  configurationPage: {
+    backShelf: 'Arka Raf',
+    frontShelf: 'Ön Raf',
+    header: 'Konfigürasyon',
+  },
+
+  dropdownMenu: {
+    noChoice: 'Seçenek Yok',
+  },
   forgetPasswordAndActiovationPage: {
     email: 'E-posta',
     emptyEmail: 'E-posta boş olamaz.',
@@ -33,6 +42,14 @@ const tr = {
     profilePictureChangeMessage: 'Profil resmi değiştirildi.',
     selectLanguage: 'Dil Seç',
     surname: 'Soyad',
+  },
+  shelfConfigurationPage: {
+    adjustConfiguration: 'Konfigürasyonu Ayarla',
+    header: 'Raf Konfigürasyon',
+    noData: 'Konfigürasyon verisi bulunamadı',
+    selectShelfItems: 'Raf Ürünleri Seç',
+    size: 'Ürün Boyutu',
+    totalSize: 'Toplam Boyut',
   },
   signupPage: {
     back: 'Geri',

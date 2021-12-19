@@ -8,7 +8,7 @@ import styles from './ForgetPasswordAndActivation.styles';
 import { stylesGlobal } from '../../../styles/';
 import { useTheme } from '../../../theme';
 
-export default function ForgetPassword({ route }) {
+const ForgetPassword = ({ route }) => {
   const [email, setEmail] = useState('');
   const [selectedTab, setSelectedTab] = useState(route.params.type);
 
@@ -108,4 +108,6 @@ export default function ForgetPassword({ route }) {
       </View>
     </SafeAreaView>
   );
-}
+};
+
+export default ForgetPassword;

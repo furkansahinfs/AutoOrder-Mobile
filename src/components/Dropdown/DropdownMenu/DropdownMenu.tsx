@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { CheckBox } from '../..';
+import { I18N } from '../../../locales';
+import { useTheme } from '../../../theme';
 import { styles } from './DropdownMenu.style';
 
 const DropdownMenu = (props: IDropdownMenu) => {
@@ -20,6 +22,7 @@ const DropdownMenu = (props: IDropdownMenu) => {
   const [renderAgain, setRenderAgain] = useState<any>(false);
   const [selectedChoices, setSelectedChoices] = useState<any>({});
   const [choiceTitles, setChoiceTitles] = useState<any>({});
+  const { colors } = useTheme();
 
   useEffect(() => {
     initChoiceStatus();
@@ -35,14 +38,20 @@ const DropdownMenu = (props: IDropdownMenu) => {
       titles[key] = titleKey ? choices[i][titleKey] : choices[i];
       currentChoices[key] = false;
     }
+    if (currentChoice instanceof Array) {
+      for (let j = 0; j < currentChoice.length; j++) {
+        currentChoices[currentChoice[j][itemKey]] = true;
+      }
+    }
+
     setSelectedChoices(currentChoices);
     setChoiceTitles(titles);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [choices]);
 
-  const setChoiceStatus = (item: any, newValue: any) => {
+  const setChoiceStatus = (item: any, key: any, newValue: any) => {
     let currentChoices = selectedChoices;
-    currentChoices[item] = newValue;
+    currentChoices[key] = newValue;
 
     const trueKeys = Object.keys(currentChoices)
       .filter(function (k) {
@@ -50,7 +59,13 @@ const DropdownMenu = (props: IDropdownMenu) => {
       })
       .map(String);
 
-    setChoice(trueKeys.length === 0 ? null : trueKeys);
+    const newSelectedChoices: Array<any> = [];
+    choices.map((mapItem: any) => {
+      if (trueKeys.includes(mapItem[itemKey])) {
+        newSelectedChoices.push(mapItem);
+      }
+    });
+    setChoice(newSelectedChoices);
     setSelectedChoices(currentChoices);
 
     setRenderAgain(!renderAgain);
@@ -61,9 +76,9 @@ const DropdownMenu = (props: IDropdownMenu) => {
       if (currentChoice && currentChoice?.length > 0) {
         let title = '';
         for (let i = 0; i < currentChoice.length; i++) {
-          title += currentChoice[i] + ', ';
+          title += titleKey ? currentChoice[i][titleKey] + ', ' : currentChoice[i][itemKey] + ', ';
         }
-        title = title.slice(0, -1);
+        title = title.slice(0, -2);
         return title;
       } else {
         return multipleChoiceDropdownTitle ? multipleChoiceDropdownTitle : dropdownTitle;
@@ -112,7 +127,9 @@ const DropdownMenu = (props: IDropdownMenu) => {
         )
       );
     } else {
-      return expandState && <Text style={styles.choiceStyle}>{'No Choice'}</Text>;
+      return (
+        expandState && <Text style={styles.choiceStyle}>{I18N.t('dropdownMenu.noChoice')}</Text>
+      );
     }
   };
 
@@ -127,7 +144,7 @@ const DropdownMenu = (props: IDropdownMenu) => {
                 <View key={i} style={styles.multipleChoiceContainer}>
                   <CheckBox
                     checked={selectedChoices[key]}
-                    onPressFunction={() => setChoiceStatus(key, !selectedChoices[key])}
+                    onPressFunction={() => setChoiceStatus(choice, key, !selectedChoices[key])}
                     title={titleKey ? choice[titleKey] : itemKey ? choice[itemKey] : choice}
                     widthFit={false}
                   />
@@ -138,7 +155,9 @@ const DropdownMenu = (props: IDropdownMenu) => {
         )
       );
     } else {
-      return expandState && <Text style={styles.choiceStyle}>{'No Choice'}</Text>;
+      return (
+        expandState && <Text style={styles.choiceStyle}>{I18N.t('dropdownMenu.noChoice')}</Text>
+      );
     }
   };
 
@@ -152,11 +171,11 @@ const DropdownMenu = (props: IDropdownMenu) => {
     <View style={styles.container}>
       <TouchableOpacity
         disabled={loading}
-        style={styles.categoryHeaderStyle}
+        style={[styles.categoryHeaderStyle, { borderColor: colors.border }]}
         onPress={() => setExpandState(!expandState)}
         activeOpacity={1}
       >
-        <Text style={styles.categoryNameStyle}>{getTitle()}</Text>
+        <Text style={[styles.categoryNameStyle, { color: colors.text }]}>{getTitle()}</Text>
       </TouchableOpacity>
       {renderContent()}
     </View>
@@ -171,7 +190,7 @@ interface IDropdownMenu {
   closeOnSelection?: boolean;
   multipleChoice?: boolean;
   multipleChoiceDropdownTitle?: string;
-  itemKey?: any;
+  itemKey: any;
   titleKey?: any;
   loading?: boolean;
 }

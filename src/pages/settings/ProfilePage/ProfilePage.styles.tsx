@@ -76,6 +76,10 @@ const styles = StyleSheet.create({
   saveIcon: {
     bottom: scale(10),
   },
+  scrollView: {
+    flex: 1,
+    height: '100%',
+  },
 
   theme: {
     flexDirection: 'row',
@@ -91,8 +95,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  safeAreaView: {
+  topView: {
     backgroundColor: '#3454fc',
+  },
+
+  safeAreaView: {
     flex: 1,
   },
 });

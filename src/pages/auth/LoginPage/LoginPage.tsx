@@ -9,7 +9,7 @@ import { stylesGlobal } from '../../../styles/';
 import { useTheme } from '../../../theme';
 import { navigate } from '../../../navigation';
 
-export default function LoginPage() {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showLoading, setShowLoading] = useState(false);
@@ -93,4 +93,6 @@ export default function LoginPage() {
       {showLoading && <ActivityIndicator />}
     </View>
   );
-}
+};
+
+export default LoginPage;
