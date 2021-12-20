@@ -19,7 +19,9 @@ const Button = ({ onPressFunction, text, mode, hasMarginVertical, widthFit }: Bu
         styles.button,
         hasMarginVertical ? styles.marginVertical : {},
         !widthFit ? styles.width : {},
-        { backgroundColor: colors.button },
+        mode === 'contained'
+          ? { backgroundColor: colors.button }
+          : { borderWidth: 1, borderColor: colors.border },
       ]}
       mode={mode}
       onPress={onPressFunction}

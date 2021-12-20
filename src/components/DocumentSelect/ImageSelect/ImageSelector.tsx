@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import * as ImagePicker from 'react-native-image-picker';
-import { SafeAreaView, View, StatusBar, Image } from 'react-native';
+import { ImageLibraryOptions } from 'react-native-image-picker';
+import { Image, StatusBar, SafeAreaView, ScrollView, View } from 'react-native';
 import styles from './ImageSelector.style';
 import { requestCameraPermission } from './ImageSelector.helper';
-import { Button } from '../../Button';
-import { useTheme } from '../../../theme';
+import { Icon, TextButton } from '../..';
+import ModalView from './Subcomponents/ModalView';
+import { I18N } from '../../../locales';
 
 interface ImageSelectorProps {
   fileUri: string | null;
@@ -12,14 +14,10 @@ interface ImageSelectorProps {
 }
 
 const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
-  const { colors } = useTheme();
-
-  let options = {
-    storageOptions: {
-      skipBackup: true,
-      path: 'images',
-      mediaType: 'photo',
-    },
+  const [isModalVisible, setModalVisible] = useState<boolean>(false);
+  let options: ImageLibraryOptions = {
+    selectionLimit: 1,
+    mediaType: 'photo',
   };
 
   const launchCamera = async () => {
@@ -45,13 +43,7 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
     return (
       <View style={styles.ImageSections}>
         <Image source={{ uri: fileUri }} style={styles.images} />
-        <Button
-          mode="contained"
-          onPressFunction={() => setFileUri(null)}
-          text={'Delete'}
-          widthFit={true}
-          hasMarginVertical={true}
-        />
+        <Icon name={'times'} onPressFunction={() => setFileUri(null)} />
       </View>
     );
   };
@@ -60,26 +52,24 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
     <Fragment>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <View style={[styles.body, { backgroundColor: colors.card }]}>
-          {fileUri !== null && renderFileUri()}
-          <View style={styles.btnParentSection}>
-            <Button
-              mode="contained"
-              onPressFunction={async () => await launchCamera()}
-              text={'Camera'}
-              widthFit={true}
-              hasMarginVertical={true}
+        <ScrollView>
+          <View style={styles.body}>
+            <ModalView
+              isModalVisible={isModalVisible}
+              setModalVisible={setModalVisible}
+              launchCamera={launchCamera}
+              launchImageLibrary={launchImageLibrary}
             />
 
-            <Button
-              mode="contained"
-              onPressFunction={async () => await launchImageLibrary()}
-              text={'Gallery'}
-              widthFit={true}
+            {fileUri !== null && renderFileUri()}
+            <TextButton
+              onPressFunction={() => setModalVisible(true)}
+              text={I18N.t('imageSelector.selectPhoto')}
               hasMarginVertical={true}
+              widthFit={true}
             />
           </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </Fragment>
   );

@@ -17,7 +17,7 @@ const makeStyles = (colors: any) =>
     card: {
       backgroundColor: colors.card,
       justifyContent: 'center',
-      paddingVertical: '5%',
+      paddingVertical: '10%',
       borderRadius: scale(15),
       shadowColor: 'grey',
       shadowOffset: {

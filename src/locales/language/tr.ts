@@ -1,4 +1,11 @@
 const tr = {
+  addressPage: {
+    cancel: 'İptal',
+    changeAddress: 'Adresinizı değiştirmek istiyor musunuz ?',
+    header: 'Adres',
+    ok: 'Tamam',
+    selectedLocation: 'Seçilen Lokasyon',
+  },
   configurationPage: {
     backShelf: 'Arka Raf',
     frontShelf: 'Ön Raf',
@@ -21,6 +28,10 @@ const tr = {
     password: 'Parola',
     send: 'Gönder',
   },
+  imageSelector: {
+    closeModal: 'Kapat',
+    selectPhoto: 'Fotoğraf Seç',
+  },
   loginPage: {
     email: 'E-posta',
     emptyEmail: 'E-posta boş olamaz.',
@@ -33,7 +44,11 @@ const tr = {
     password: 'Parola',
     signupButton: 'Kayıt Ol',
   },
+  mainPage: {
+    sendPhoto: 'Fotoğrafı Gönder',
+  },
   profilePage: {
+    changeAddress: 'Adres Değiştir',
     darkTheme: 'Koyu Tema',
     email: 'E-posta',
     name: 'Ad',

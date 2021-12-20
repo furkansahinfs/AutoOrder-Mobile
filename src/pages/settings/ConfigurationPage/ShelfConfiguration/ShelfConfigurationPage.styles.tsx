@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  cardOverride: {
+    marginBottom: '5%',
+    paddingVertical: '5%',
+  },
 
   flatlist: {
     backgroundColor: 'transparent',
@@ -44,7 +48,6 @@ const styles = StyleSheet.create({
   totalSizeView: {
     paddingVertical: scale(3),
     borderTopWidth: 1,
-    borderTopColor: 'red',
   },
 
   safeAreaView: {

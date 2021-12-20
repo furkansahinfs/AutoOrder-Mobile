@@ -5,6 +5,8 @@ import { I18N } from '../../../locales';
 import { useTheme } from '../../../theme';
 import { styles } from './DropdownMenu.style';
 
+//TODO Refactoring
+
 const DropdownMenu = (props: IDropdownMenu) => {
   const {
     choices,

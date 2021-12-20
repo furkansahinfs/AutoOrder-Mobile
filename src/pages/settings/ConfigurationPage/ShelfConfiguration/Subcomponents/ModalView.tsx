@@ -3,14 +3,15 @@ import { Modal, ScrollView, View } from 'react-native';
 import { DropdownMenu, Icon } from '../../../../../components';
 import { I18N } from '../../../../../locales';
 import { stylesGlobal } from '../../../../../styles';
+import { ItemProps } from '../../../../../assets';
 import { useTheme } from '../../../../../theme';
 import styles from './ModalView.styles';
 
 interface ModalViewProps {
   setModalVisible: (visibility: boolean) => void;
   isModalVisible: boolean;
-  shelfItems: Array<any>;
-  shelfChoices: Array<any>;
+  shelfItems: Array<ItemProps>;
+  shelfChoices: Array<ItemProps>;
   setShelfChoices: React.Dispatch<React.SetStateAction<any[]>>;
   closeModalFunction: () => void;
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  ConfigurationPage,
+  AddressPage,
   ForgetPasswordAndActivationPage,
   LanguagePage,
   LoginPage,
@@ -27,7 +27,7 @@ function MyStack() {
       <Stack.Screen name="Signup" component={SignupPage} />
       <Stack.Screen name="Splash" component={SplashPage} />
 
-      <Stack.Screen name="Configuration" component={ConfigurationPage} />
+      <Stack.Screen name="Address" component={AddressPage} />
       <Stack.Screen name="ShelfConfiguration" component={ShelfConfigurationPage} />
     </Stack.Navigator>
   );

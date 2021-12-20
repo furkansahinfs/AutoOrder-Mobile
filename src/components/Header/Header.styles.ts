@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
   container: {
     alignSelf: 'stretch',
     height: moderateScale(50),
-    marginHorizontal: scale(10),
-    marginVertical: scale(3),
+    paddingHorizontal: scale(10),
+    paddingVertical: scale(3),
     zIndex: 1,
   },
   body: {

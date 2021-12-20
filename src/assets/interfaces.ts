@@ -1,3 +1,9 @@
+export interface ItemProps {
+  name: string;
+  size: string;
+  type: string;
+}
+
 export interface Point {
   lat: number;
   lng: number;
@@ -14,10 +20,8 @@ export interface ProfileData {
   email: string;
   id: number;
   name: string;
-  phone: string | null;
-  profile_picture: string | null;
-  registered_at: number;
-  role: string;
+  phone?: string;
+  profile_picture?: string;
   surname: string;
 }
 

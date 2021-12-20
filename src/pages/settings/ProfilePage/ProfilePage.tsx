@@ -5,7 +5,7 @@ import { DocumentPickerResponse } from 'react-native-document-picker';
 import { getTheme } from '../../../helpers';
 import { ActivityIndicator, DefaultIcon, TextButton, Toast } from '../../../components';
 import { I18N } from '../../../locales';
-import { Images } from '../../../assets';
+import { Images, ProfileData } from '../../../assets';
 import {
   getProfileData,
   getLabel,
@@ -18,7 +18,6 @@ import {
 import styles from './ProfilePage.styles';
 import { stylesGlobal } from '../../../styles';
 import useTheme from '../../../theme/useTheme';
-import { ProfileData } from '../../../assets/interfaces';
 import { navigate } from '../../../navigation';
 
 //TODO Refactoring
@@ -31,9 +30,6 @@ const ProfilePage = () => {
     id: 10,
     name: 'string',
     phone: '05012345678',
-    profile_picture: null,
-    registered_at: 10,
-    role: 'string',
     surname: 'string',
   });
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
@@ -169,6 +165,13 @@ const ProfilePage = () => {
                   <TextButton
                     onPressFunction={() => navigate('Language', { page: 'Main' })}
                     text={I18N.t('profilePage.selectLanguage')}
+                  />
+                </View>
+
+                <View style={globalStyles.buttonMargin}>
+                  <TextButton
+                    onPressFunction={() => navigate('Address')}
+                    text={I18N.t('profilePage.changeAddress')}
                   />
                 </View>
 

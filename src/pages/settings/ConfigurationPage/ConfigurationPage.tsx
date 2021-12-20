@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { Header } from '../../../components';
 import { I18N } from '../../../locales';
 import { navigate } from '../../../navigation';
@@ -8,11 +8,6 @@ import styles from './ConfigurationPage.styles';
 
 const ConfigurationPage = () => {
   const { colors } = useTheme();
-  useEffect(() => {
-    (async () => {
-      //await fetchProfile();
-    })();
-  }, []);
 
   return (
     <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background }]}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './Header.styles';
-import { BackButton } from '..';
+import { BackButtonInHeader } from '..';
 import { useTheme } from '../../theme';
 
 interface IHeader {
@@ -18,7 +18,7 @@ const Header = ({ back, title, subtitle, rightIcon, onRightIconPress }: IHeader)
   const Left = () => {
     return (
       <View>
-        <BackButton color={colors.text} />
+        <BackButtonInHeader color={colors.text} />
       </View>
     );
   };

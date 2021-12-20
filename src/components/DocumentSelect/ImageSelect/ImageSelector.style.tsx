@@ -3,16 +3,15 @@ import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     justifyContent: 'center',
-    borderColor: 'black',
-    borderWidth: 1,
     height: '100%',
     width: '100%',
   },
   ImageSections: {
     display: 'flex',
     alignSelf: 'center',
+    alignItems: 'center',
     flexDirection: 'column',
     paddingHorizontal: scale(5),
     paddingVertical: scale(5),
@@ -25,11 +24,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     marginHorizontal: scale(3),
-  },
-  btnParentSection: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: scale(10),
   },
 });
 

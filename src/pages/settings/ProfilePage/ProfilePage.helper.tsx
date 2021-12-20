@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-import { LogoutRequest, ProfileInfo, ProfilePicture } from '../../../api';
+import { ProfileInfo, ProfilePicture } from '../../../api';
 import { deleteUserCredentials, loadThemeToRedux, setTheme } from '../../../helpers';
-import { Toast } from '../../../components';
 import styles from './ProfilePage.styles';
 import { I18N } from '../../../locales';
 import { navigationReset } from '../../../navigation';

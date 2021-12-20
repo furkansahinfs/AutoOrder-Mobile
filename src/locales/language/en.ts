@@ -1,4 +1,11 @@
 const en = {
+  addressPage: {
+    cancel: 'Cancel',
+    changeAddress: 'Do you want to change your address ?',
+    header: 'Address',
+    ok: 'OK',
+    selectedLocation: 'Selected Location',
+  },
   configurationPage: {
     backShelf: 'Back Shelf',
     frontShelf: 'Front Shelf',
@@ -20,13 +27,15 @@ const en = {
     password: 'Password',
     send: 'Send',
   },
+
+  imageSelector: {
+    closeModal: 'Close',
+    selectPhoto: 'Select A Photo',
+  },
   loginPage: {
     email: 'Email',
     emptyEmail: 'Email cannot be empty.',
     emptyPassword: 'Password cannot be empty.',
-    emptyName: 'Name cannot be empty.',
-    emptyPhone: 'Phone cannot be empty.',
-    emptySurname: 'Surname cannot be empty.',
     forgetPassword: 'Forget Password',
     hello: 'Welcome',
     loginBody: 'Login to continue to the app.',
@@ -35,7 +44,12 @@ const en = {
     password: 'Password',
     signupButton: 'Sign Up',
   },
+
+  mainPage: {
+    sendPhoto: 'Send Photo',
+  },
   profilePage: {
+    changeAddress: 'Change Address',
     darkTheme: 'Dark Theme',
     email: 'Email',
     name: 'Name',
@@ -59,7 +73,10 @@ const en = {
     confirmPasswordError: 'Password confirmation did not match.',
     email: 'Email',
     emptyEmail: 'Email cannot be empty.',
+    emptyName: 'Name cannot be empty.',
     emptyPassword: 'Password cannot be empty.',
+    emptyPhone: 'Phone cannot be empty.',
+    emptySurname: 'Surname cannot be empty.',
     name: 'Name',
     next: 'Next',
     password: 'Password',

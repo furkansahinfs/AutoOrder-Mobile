@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: scale(10),
-    paddingHorizontal: scale(2),
   },
   marginVertical: {
     marginVertical: scale(5),

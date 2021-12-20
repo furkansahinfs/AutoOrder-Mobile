@@ -11,11 +11,11 @@ function validate(password: string, confirmPassword: string) {
   const isPasswordConfirmed = password === confirmPassword;
 
   if (!password) {
-    errorMessage += I18N.t('emptyPassword') + '\n';
+    errorMessage += I18N.t('signupPage.emptyPassword') + '\n';
   }
 
   if (!isPasswordConfirmed) {
-    errorMessage += I18N.t('confirmPasswordError') + '\n';
+    errorMessage += I18N.t('signupPage.confirmPasswordError') + '\n';
   }
 
   const isVaild = !errorMessage;

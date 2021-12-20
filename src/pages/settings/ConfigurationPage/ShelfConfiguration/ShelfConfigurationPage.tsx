@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
-import { Images } from '../../../../assets';
+import { Images, ItemProps } from '../../../../assets';
 import { Header, Icon, TextButton } from '../../../../components';
 import { I18N } from '../../../../locales';
 import { stylesGlobal } from '../../../../styles';
@@ -12,8 +12,8 @@ import ModalView from './Subcomponents/ModalView';
 
 const ShelfConfigurationPage = ({ route }) => {
   const shelfType = route.params.shelfType;
-  const [shelfChoices, setShelfChoices] = useState<Array<any>>([]);
-  const [shelfItems, setShelfItems] = useState<Array<any>>([]);
+  const [shelfChoices, setShelfChoices] = useState<Array<ItemProps>>([]);
+  const [shelfItems, setShelfItems] = useState<Array<ItemProps>>([]);
   const [totalSize, setTotalSize] = useState<number>(0);
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const { colors } = useTheme();
@@ -38,7 +38,7 @@ const ShelfConfigurationPage = ({ route }) => {
 
   const calculateTotalSize = () => {
     let total = 0;
-    shelfChoices.forEach((element: any) => {
+    shelfChoices.forEach((element: ItemProps) => {
       total += parseInt(element.size.slice(0, -1), 10);
     });
 
@@ -67,10 +67,10 @@ const ShelfConfigurationPage = ({ route }) => {
           style={[styles.flatlist, { backgroundColor: colors.background2 }]}
           contentContainerStyle={[styles.flatlist, { backgroundColor: colors.background2 }]}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }: { item: any }) => (
-            <Card containerStyle={[globalStyles.card, { marginBottom: '5%' }]}>
+          renderItem={({ item }: { item: ItemProps }) => (
+            <Card containerStyle={[globalStyles.card, styles.cardOverride]}>
               <View style={globalStyles.row}>
-                <Image source={Images.defaultProfilePicture} style={styles.image} />
+                <Image source={Images.items[item.name]} style={styles.image} />
                 <View style={styles.cardItem}>
                   <Text style={globalStyles.labelBigger}>{item.name}</Text>
                   <Text style={globalStyles.labelSmaller}>
@@ -89,6 +89,7 @@ const ShelfConfigurationPage = ({ route }) => {
               styles.totalSizeView,
               {
                 backgroundColor: colors.background2,
+                borderColor: colors.border,
               },
             ]}
           >
