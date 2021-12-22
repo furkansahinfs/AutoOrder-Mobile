@@ -2,10 +2,10 @@ import { Linking, Platform } from 'react-native';
 
 /**
  * The function provides to get a direction to the given location
- * @param latitude
- * @param longitude
+ * @param latitude : number
+ * @param longitude : number
  */
-function getDirection(latitude, longitude) {
+function getDirection(latitude:number, longitude:number) {
   const go = Platform.select({
     ios: () => {
       Linking.openURL('http://maps.apple.com/?daddr=' + latitude + ',' + longitude);
