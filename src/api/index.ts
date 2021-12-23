@@ -3,10 +3,12 @@ export {
   LoginRequest,
   LogoutRequest,
   NewActivationRequest,
-  ProfileInfo,
-  ProfilePicture,
+  ProfileInfoRequest,
+  ProfilePictureRequest,
   RefreshToken,
+  SendImageRequest,
   SignupRequest,
+  UpdateProfileInfoRequest,
 } from './requests';
 
 import { ApiHelper } from './serverConnections/';

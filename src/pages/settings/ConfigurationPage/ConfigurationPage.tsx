@@ -11,7 +11,7 @@ const ConfigurationPage = () => {
 
   return (
     <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background }]}>
-      <Header back={true} title={I18N.t('configurationPage.header')} />
+      <Header back={false} title={I18N.t('configurationPage.header')} />
       <View style={styles.view}>
         <TouchableOpacity
           onPress={() => navigate('ShelfConfiguration', { shelfType: 'Back' })}

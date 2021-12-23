@@ -6,7 +6,11 @@ import { Header, Icon, TextButton } from '../../../../components';
 import { I18N } from '../../../../locales';
 import { stylesGlobal } from '../../../../styles';
 import { useTheme } from '../../../../theme';
-import { getBackShelfItems, getFrontShelfItems } from './ShelfConfiguration.helper';
+import {
+  getBackShelfItems,
+  getFrontShelfItems,
+  getItemNameWoutSpace,
+} from './ShelfConfiguration.helper';
 import styles from './ShelfConfigurationPage.styles';
 import ModalView from './Subcomponents/ModalView';
 
@@ -58,7 +62,11 @@ const ShelfConfigurationPage = ({ route }) => {
     <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background2 }]}>
       <Header
         back={true}
-        title={I18N.t('shelfConfigurationPage.header')}
+        title={
+          I18N.t('shelfConfigurationPage')[shelfType] +
+          ' ' +
+          I18N.t('shelfConfigurationPage.header')
+        }
         rightIcon={<Icon name={'star'} onPressFunction={() => setModalVisible(!isModalVisible)} />}
       />
       <View style={styles.view}>
@@ -70,7 +78,10 @@ const ShelfConfigurationPage = ({ route }) => {
           renderItem={({ item }: { item: ItemProps }) => (
             <Card containerStyle={[globalStyles.card, styles.cardOverride]}>
               <View style={globalStyles.row}>
-                <Image source={Images.items[item.name]} style={styles.image} />
+                <Image
+                  source={Images.items[getItemNameWoutSpace(item.name)]}
+                  style={styles.image}
+                />
                 <View style={styles.cardItem}>
                   <Text style={globalStyles.labelBigger}>{item.name}</Text>
                   <Text style={globalStyles.labelSmaller}>

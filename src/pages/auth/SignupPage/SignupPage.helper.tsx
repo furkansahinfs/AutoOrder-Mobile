@@ -2,6 +2,8 @@ import { MailValidator, PasswordValidator } from '../../../validator';
 import { Toast } from '../../../components';
 import { I18N } from '../../../locales/language';
 import { SignupRequest } from '../../../api';
+import { navigate } from '../../../navigation';
+import { SignupProps } from '../../../assets';
 
 /**
  * The function controls that given email and password are valid
@@ -57,27 +59,19 @@ export function validateInfoInputs(name: string, surname: string) {
   return true;
 }
 
-interface SignupProps {
-  email: string;
-  name: string | null;
-  password: string;
-  phone: string | null;
-  surname: string | null;
-}
 
 /**
  * The function requests to the API to register user.
  * If register is successful, view a Toast message.
  * Else view a Toast message that includes error message of response
  * @param json : SignupProps
- * @param navigation
  */
-export async function register(json: SignupProps, navigation: any) {
+export async function register(json: SignupProps) {
   const response: any = await SignupRequest(json);
   if (!response?.id) {
     Toast(response, true);
   } else {
     Toast(I18N.t('signupPage.signupSuccessfull'), true);
-    navigation.navigate('Login');
+    navigate('Login');
   }
 }

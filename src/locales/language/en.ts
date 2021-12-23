@@ -56,11 +56,14 @@ const en = {
     noInfo: 'No Info',
     phone: 'Phone',
     profilePictureChangeMessage: 'Profile picture is changed.',
+    save: 'Save',
     selectLanguage: 'Select Language',
     surname: 'Surname',
   },
   shelfConfigurationPage: {
     adjustConfiguration: 'Adjust Configuration',
+    Back: 'Back',
+    Front: 'Front',
     header: 'Shelf Configuration',
     noData: 'There is no configuration data',
     selectShelfItems: 'Select Shelf Items',
@@ -90,6 +93,7 @@ const en = {
   tabbar: {
     main: 'Main',
     profile: 'Profile',
+    configuration: 'Configuration',
   },
   days: {
     monday: 'Monday',

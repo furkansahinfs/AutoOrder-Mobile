@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     width: scale(70),
     height: scale(70),
     aspectRatio: 1,
+    borderRadius: scale(10),
     alignSelf: 'flex-start',
   },
 

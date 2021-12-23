@@ -6,5 +6,6 @@ export {
   RefreshToken,
   SignupRequest,
 } from './auth/';
-export { ProfileInfo, ProfilePicture } from './profile';
+export { SendImageRequest } from './image';
+export { ProfileInfoRequest, ProfilePictureRequest, UpdateProfileInfoRequest } from './profile';
 export { default as ReRequest } from './rerequest';

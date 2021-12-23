@@ -1,10 +1,8 @@
 import api from '../../index';
-import { API_CLIENT_ID } from '@env';
 
 const newActivation = async (email: string) => {
   const path = '/auth/resend-activation-code';
   const json = {
-    client_id: API_CLIENT_ID,
     email: email,
   };
 

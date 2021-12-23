@@ -55,11 +55,14 @@ const tr = {
     noInfo: 'Bilgi yok',
     phone: 'Telefon',
     profilePictureChangeMessage: 'Profil resmi değiştirildi.',
+    save: 'Kaydet',
     selectLanguage: 'Dil Seç',
     surname: 'Soyad',
   },
   shelfConfigurationPage: {
     adjustConfiguration: 'Konfigürasyonu Ayarla',
+    Back: 'Arka',
+    Front: 'Ön',
     header: 'Raf Konfigürasyon',
     noData: 'Konfigürasyon verisi bulunamadı',
     selectShelfItems: 'Raf Ürünleri Seç',
@@ -86,6 +89,7 @@ const tr = {
   tabbar: {
     main: 'Ana Sayfa',
     profile: 'Profil',
+    configuration: 'Configuration',
   },
   days: {
     monday: 'Pazartesi',

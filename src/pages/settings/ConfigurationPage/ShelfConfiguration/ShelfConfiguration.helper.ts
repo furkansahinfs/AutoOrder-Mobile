@@ -15,7 +15,14 @@ export const getFrontShelfItems = () => {
     { name: 'Chocolate', size: '1X', type: 'Front' },
     { name: 'Olive', size: '1X', type: 'Front' },
     { name: 'Butter', size: '2X', type: 'Front' },
-    { name: 'TomatoPaste', size: '1X', type: 'Front' },
-    { name: 'BabyFood', size: '1X', type: 'Front' },
+    { name: 'Tomato Paste', size: '1X', type: 'Front' },
+    { name: 'Baby Food', size: '1X', type: 'Front' },
   ];
 };
+
+export function getItemNameWoutSpace(itemName: string) {
+  return itemName
+    .split(' ')
+    .filter((s) => s)
+    .join('');
+}

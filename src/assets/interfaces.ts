@@ -1,3 +1,11 @@
+export interface SignupProps {
+  email: string;
+  name?: string;
+  password: string;
+  phone?: string;
+  surname?: string;
+}
+
 export interface ItemProps {
   name: string;
   size: string;
@@ -18,9 +26,9 @@ export interface RegionProps {
 
 export interface ProfileData {
   email: string;
-  id: number;
+  id?: number;
   name: string;
-  phone?: string;
+  phone: string;
   profile_picture?: string;
   surname: string;
 }

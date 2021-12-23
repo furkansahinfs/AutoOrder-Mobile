@@ -1,10 +1,7 @@
-import React from 'react';
-import { View, Text } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-import { ProfileInfo, ProfilePicture } from '../../../api';
+import { ProfileInfoRequest, ProfilePictureRequest, UpdateProfileInfoRequest } from '../../../api';
+import { ProfileData } from '../../../assets';
 import { deleteUserCredentials, loadThemeToRedux, setTheme } from '../../../helpers';
-import styles from './ProfilePage.styles';
-import { I18N } from '../../../locales';
 import { navigationReset } from '../../../navigation';
 
 export interface PhotoProps {
@@ -33,14 +30,24 @@ export async function logout() {
   });*/
 }
 
+/*
 export function getLabel(
-  labelHead: string,
-  labelInfo: string | undefined | null,
+  label:   { text:string, value: string, editable: boolean },
+  setProfileData:
   colors: any,
   index: number,
 ) {
   return (
     <View style={styles.labelView} key={index}>
+        <TextInput
+              func={(value) => setEmail(value)}
+              iconName={"user"}
+              keyboardType={"default"}
+              maxLength={undefined}
+              placeholderText={I18N.t("email")}
+              secureText={false}
+              val={email}
+            />
       <Text style={[styles.labelHead, { color: colors.text }]}>{labelHead}</Text>
       <Text style={[styles.labelInfo, { color: colors.text }]}>
         {labelInfo ? labelInfo : I18N.t('profilePage.noInfo')}
@@ -48,13 +55,14 @@ export function getLabel(
     </View>
   );
 }
+*/
 
 /**
  * Get profile information from api
  *
  */
 export async function getProfileData() {
-  return await ProfileInfo();
+  return await ProfileInfoRequest();
 }
 
 /**
@@ -84,8 +92,16 @@ export async function pickImage() {
  */
 export async function setPicture(photo: PhotoProps | undefined) {
   if (photo !== undefined) {
-    return await ProfilePicture(photo);
+    return await ProfilePictureRequest(photo);
   }
+}
+
+/**
+ * Send the updated profile info to the API to save
+ * @param info ProfileData
+ */
+export async function saveProfileData(info: ProfileData) {
+  return await UpdateProfileInfoRequest(info);
 }
 
 /**

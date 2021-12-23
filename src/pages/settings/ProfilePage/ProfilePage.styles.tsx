@@ -81,6 +81,10 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 
+  textInput: {
+    marginHorizontal: '3%',
+  },
+
   theme: {
     flexDirection: 'row',
     alignSelf: 'center',

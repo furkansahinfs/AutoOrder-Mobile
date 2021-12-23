@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput as NativeTextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { useTheme } from '../../../theme';
 import styles from './DisabledTextInput.styles';
 
 interface TextInputProps {
@@ -10,6 +11,7 @@ interface TextInputProps {
 }
 
 const TextInput = ({ placeholderText, val, iconName }: TextInputProps) => {
+  const { colors } = useTheme();
   return (
     <NativeTextInput
       mode="outlined"
@@ -19,10 +21,11 @@ const TextInput = ({ placeholderText, val, iconName }: TextInputProps) => {
       style={styles.input}
       theme={{
         colors: {
-          background: 'white',
-          text: '#abb0c4',
+          background: colors.textInput,
+          text: colors.text,
           primary: '#7999FD',
           placeholder: '#9297a8',
+          disabled: colors.border,
         },
         roundness: 8,
       }}
