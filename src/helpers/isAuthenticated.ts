@@ -11,17 +11,12 @@ async function isAuthenticated() {
   await loadUserCredentialsToRedux();
   // get credentials from redux
   const userCredentials = getUserCredentials();
-
-  //TODO
-
-  return true;
-  /*
   if (!userCredentials.access_token) {
     return false;
   } else {
     // if is authenticated, refresh token
     return await tokenRefresher();
-  }*/
+  }
 }
 
 export default isAuthenticated;

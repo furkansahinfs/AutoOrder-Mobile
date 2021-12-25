@@ -55,7 +55,7 @@ const en = {
     name: 'Name',
     noInfo: 'No Info',
     phone: 'Phone',
-    profilePictureChangeMessage: 'Profile picture is changed.',
+    profileChangedMessage: 'Profile info is changed.',
     save: 'Save',
     selectLanguage: 'Select Language',
     surname: 'Surname',

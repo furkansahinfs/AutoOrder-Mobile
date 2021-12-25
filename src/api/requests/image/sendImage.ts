@@ -7,12 +7,12 @@ interface PhotoProps {
 }
 
 const sendImage = async (photo: PhotoProps) => {
-  const path = '/users/me/picture';
+  const path = '/image';
   const body = new FormData();
   body.append('image', photo);
 
   return await api
-    .PUT(path, body, {
+    .POST(path, body, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
     .then((result: any) => {

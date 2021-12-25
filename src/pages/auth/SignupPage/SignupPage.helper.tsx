@@ -59,7 +59,6 @@ export function validateInfoInputs(name: string, surname: string) {
   return true;
 }
 
-
 /**
  * The function requests to the API to register user.
  * If register is successful, view a Toast message.
@@ -68,7 +67,7 @@ export function validateInfoInputs(name: string, surname: string) {
  */
 export async function register(json: SignupProps) {
   const response: any = await SignupRequest(json);
-  if (!response?.id) {
+  if (!response?.email) {
     Toast(response, true);
   } else {
     Toast(I18N.t('signupPage.signupSuccessfull'), true);

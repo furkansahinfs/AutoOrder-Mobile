@@ -1,15 +1,15 @@
 import api from '../../index';
 
-const profileInfo = async () => {
-  const path = '/userinformation';
+const getBackConfiguration = async () => {
+  const path = '/users/me';
 
   return await api.GET(path, {}).then((result: any) => {
     if (result.status === 200) {
       return result.data;
     } else {
-      return null;
+      return result.error;
     }
   });
 };
 
-export default profileInfo;
+export default getBackConfiguration;

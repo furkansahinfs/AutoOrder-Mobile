@@ -25,12 +25,11 @@ export interface RegionProps {
 }
 
 export interface ProfileData {
-  email: string;
+  email?: string;
   id?: number;
   name: string;
   phone: string;
   profile_picture?: string;
-  surname: string;
 }
 
 export interface NotificationEntity {

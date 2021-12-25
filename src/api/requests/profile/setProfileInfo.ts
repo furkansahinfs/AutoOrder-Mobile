@@ -2,7 +2,7 @@ import { ProfileData } from '../../../assets';
 import api from '../../index';
 
 const updateProfileInfo = async (info: ProfileData) => {
-  const path = '/userinformation/update';
+  const path = '/userinformation/store';
 
   const json = {
     full_name: info.name,

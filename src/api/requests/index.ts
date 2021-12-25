@@ -7,5 +7,10 @@ export {
   SignupRequest,
 } from './auth/';
 export { SendImageRequest } from './image';
-export { ProfileInfoRequest, ProfilePictureRequest, UpdateProfileInfoRequest } from './profile';
+export {
+  ProfileInfoRequest,
+  ProfilePictureRequest,
+  SetProfileInfoRequest,
+  UpdateProfileInfoRequest,
+} from './profile';
 export { default as ReRequest } from './rerequest';

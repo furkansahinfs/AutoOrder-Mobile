@@ -45,14 +45,15 @@ export default class ApiHelper {
   };
 
   POST = (path: string, data: any, config: {}) => {
+    console.log('POST', path, data);
     return this.api
       .post(path, data, config)
       .then((response: any) => {
-        return this.controlResponse(response.data);
+        return this.controlResponse(response);
       })
       .catch((error: any) => {
         console.log(error);
-        return error.response;
+        return this.controlResponse(error.response);
       });
   };
 
@@ -60,23 +61,24 @@ export default class ApiHelper {
     return this.api
       .delete(path, data)
       .then((response: any) => {
-        return this.controlResponse(response.data);
+        return this.controlResponse(response);
       })
       .catch((error: any) => {
         console.log(error);
-        return error.response;
+        return this.controlResponse(error.response);
       });
   };
 
   GET = (path: string, config: {}) => {
+    console.log('GET', path);
     return this.api
       .get(path, config)
       .then((response: any) => {
-        return this.controlResponse(response.data);
+        return this.controlResponse(response);
       })
       .catch((error: any) => {
         console.log(error);
-        return error.response;
+        return this.controlResponse(error.response);
       });
   };
 
@@ -84,11 +86,11 @@ export default class ApiHelper {
     return this.api
       .put(path, data, config)
       .then((response: any) => {
-        return this.controlResponse(response.data);
+        return this.controlResponse(response);
       })
       .catch((error: any) => {
         console.log(error);
-        return error.response;
+        return this.controlResponse(error.response);
       });
   };
 
@@ -96,11 +98,11 @@ export default class ApiHelper {
     return this.api
       .patch(path, data, config)
       .then((response: any) => {
-        return this.controlResponse(response.data);
+        return this.controlResponse(response);
       })
       .catch((error: any) => {
         console.log(error);
-        return error.response;
+        return this.controlResponse(error.response);
       });
   };
 
@@ -116,6 +118,7 @@ export default class ApiHelper {
     } else {
       return {
         data: response.data,
+        error: response.data.message !== undefined ? response.data.message : 'Error',
         success: false,
         status: response.status,
       };

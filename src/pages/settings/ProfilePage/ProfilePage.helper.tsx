@@ -1,5 +1,10 @@
 import DocumentPicker from 'react-native-document-picker';
-import { ProfileInfoRequest, ProfilePictureRequest, UpdateProfileInfoRequest } from '../../../api';
+import {
+  ProfileInfoRequest,
+  ProfilePictureRequest,
+  SetProfileInfoRequest,
+  UpdateProfileInfoRequest,
+} from '../../../api';
 import { ProfileData } from '../../../assets';
 import { deleteUserCredentials, loadThemeToRedux, setTheme } from '../../../helpers';
 import { navigationReset } from '../../../navigation';
@@ -97,10 +102,18 @@ export async function setPicture(photo: PhotoProps | undefined) {
 }
 
 /**
- * Send the updated profile info to the API to save
+ * Send the profile info to the API to save
  * @param info ProfileData
  */
 export async function saveProfileData(info: ProfileData) {
+  return await SetProfileInfoRequest(info);
+}
+
+/**
+ * Send the updated profile info to the API to save
+ * @param info ProfileData
+ */
+export async function updateProfileData(info: ProfileData) {
   return await UpdateProfileInfoRequest(info);
 }
 

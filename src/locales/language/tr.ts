@@ -54,7 +54,7 @@ const tr = {
     name: 'Ad',
     noInfo: 'Bilgi yok',
     phone: 'Telefon',
-    profilePictureChangeMessage: 'Profil resmi değiştirildi.',
+    profileChangedMessage: 'Profil bilgileri değiştirildi.',
     save: 'Kaydet',
     selectLanguage: 'Dil Seç',
     surname: 'Soyad',

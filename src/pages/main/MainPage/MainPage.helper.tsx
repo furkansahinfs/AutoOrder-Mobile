@@ -10,5 +10,8 @@ export interface PhotoProps {
  * @param photo PhotoProps
  */
 export async function sendPhoto(photo: PhotoProps) {
-  await SendImageRequest(photo);
+  const response: any = await SendImageRequest(photo);
+  //TODO
+  if (response) {
+  }
 }

@@ -1,5 +1,4 @@
 import api from '../../index';
-import { API_CLIENT_ID } from '@env';
 import store from '../../../store';
 import { updateDeviceId } from '../../../helpers';
 
@@ -12,22 +11,18 @@ async function getDeviceId() {
 }
 
 const refreshToken = async (access_token: string) => {
-  const path = '/auth/login';
-  const deviceid = await getDeviceId();
+  const path = '/refreshtoken';
+  //const deviceid = await getDeviceId();
   const json = {
-    client_id: API_CLIENT_ID,
-    client_secret: deviceid,
-    grant_type: 'access_token',
-    access_token: access_token,
-    username: '',
-    password: '',
+    token: access_token,
   };
 
   return await api.POST(path, json, {}).then((result: any) => {
+    console.log(result);
     if (result.status === 200) {
       return result.data;
     } else {
-      return result.data.error;
+      return result.error;
     }
   });
 };

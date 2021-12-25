@@ -9,11 +9,11 @@ import ModalView from './Subcomponents/ModalView';
 import { I18N } from '../../../locales';
 
 interface ImageSelectorProps {
-  fileUri: string | null;
-  setFileUri: (uri: string | null) => void;
+  file: any;
+  setFile: (file: any) => void;
 }
 
-const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
+const ImageSelector = ({ file, setFile }: ImageSelectorProps) => {
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   let options: ImageLibraryOptions = {
     selectionLimit: 1,
@@ -26,7 +26,7 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
       const response = await ImagePicker.launchCamera(options);
       console.log('launchCamera', response);
       if (response.assets !== undefined && response.assets?.length > 0) {
-        setFileUri(response.assets[0].uri ? response.assets[0].uri : null);
+        setFile(response.assets[0].uri ? response.assets[0] : null);
       }
     }
   };
@@ -35,15 +35,15 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
     const response = await ImagePicker.launchImageLibrary(options);
     console.log('launchLibrary', response);
     if (response.assets !== undefined && response.assets?.length > 0) {
-      setFileUri(response.assets[0].uri ? response.assets[0].uri : null);
+      setFile(response.assets[0].uri ? response.assets[0] : null);
     }
   };
 
   const renderFileUri = () => {
     return (
       <View style={styles.ImageSections}>
-        <Image source={{ uri: fileUri }} style={styles.images} />
-        <Icon name={'times'} onPressFunction={() => setFileUri(null)} />
+        <Image source={{ uri: file?.uri }} style={styles.images} />
+        <Icon name={'times'} onPressFunction={() => setFile(null)} />
       </View>
     );
   };
@@ -61,7 +61,7 @@ const ImageSelector = ({ fileUri, setFileUri }: ImageSelectorProps) => {
               launchImageLibrary={launchImageLibrary}
             />
 
-            {fileUri !== null && renderFileUri()}
+            {file !== null && renderFileUri()}
             <TextButton
               onPressFunction={() => setModalVisible(true)}
               text={I18N.t('imageSelector.selectPhoto')}

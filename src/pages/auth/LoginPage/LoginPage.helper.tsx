@@ -32,20 +32,20 @@ function validateLoginInputs(email: string, password: string) {
 }
 
 interface ResponseProps {
-  access_token: string;
+  token: string;
 }
 
 /**
  * The function saves the user credentials (access_token) to the keychain
- * @param response {access_token:"xxxx"}
+ * @param response {token:"xxxx"}
  */
 async function saveUserCredentials(response: ResponseProps) {
   // Set the storage credentials to the keychain
-  await setUserCredentials(response.access_token);
+  await setUserCredentials(response.token);
   // Load credentials to the redux
   await loadUserCredentialsToRedux();
   // set access_token
-  api.setToken(response.access_token);
+  api.setToken(response.token);
 }
 
 /**
@@ -59,7 +59,7 @@ async function saveUserCredentials(response: ResponseProps) {
 export async function login(email: string, password: string) {
   if (validateLoginInputs(email, password)) {
     const response: any = await LoginRequest(email, password);
-    if (!response?.access_token) {
+    if (!response?.token) {
       Toast(response, false);
     } else {
       await saveUserCredentials(response);
