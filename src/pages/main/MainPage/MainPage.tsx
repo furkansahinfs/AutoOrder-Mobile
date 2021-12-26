@@ -1,16 +1,35 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
 import { FileProps } from '../../../assets';
-import { Button, ImageSelector } from '../../../components';
+import { ActivityIndicator, Button, ImageSelector, Toast } from '../../../components';
 import { I18N } from '../../../locales';
 import { useTheme } from '../../../theme';
-import { sendPhoto } from './MainPage.helper';
+import { sendPhoto, canSendPhoto } from './MainPage.helper';
 import styles from './MainPage.styles';
 
 const MainPage = () => {
   const [file, setFile] = useState<FileProps | null>(null);
+
+  const [showLoading, setShowLoading] = useState<boolean>(false);
   const { colors } = useTheme();
   //TODO address control
+
+  /**
+   * The function send the shelf photo to the API
+   * @param photo FileProps
+   */
+  async function send(photo: FileProps) {
+    const isAuthToSendPhoto = await canSendPhoto();
+    if (isAuthToSendPhoto.result) {
+      setShowLoading(true);
+      //await sendPhoto(photo);
+      Toast(I18N.t('mainPage.pleaseWait'), true);
+    } else {
+      Toast(isAuthToSendPhoto.message, true);
+      setShowLoading(false);
+    }
+  }
+
   return (
     <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background }]}>
       <ScrollView style={styles.safeAreaView} contentContainerStyle={styles.scrollView}>
@@ -23,7 +42,7 @@ const MainPage = () => {
             <Button
               text={I18N.t('mainPage.sendPhoto')}
               onPressFunction={async () => {
-                await sendPhoto(file);
+                await send(file);
               }}
               mode={'contained'}
               hasMarginVertical={true}
@@ -31,6 +50,8 @@ const MainPage = () => {
           )}
         </View>
       </ScrollView>
+
+      {showLoading && <ActivityIndicator color={'red'} />}
     </SafeAreaView>
   );
 };

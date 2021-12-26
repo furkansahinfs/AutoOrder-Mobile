@@ -1,6 +1,6 @@
 import DocumentPicker from 'react-native-document-picker';
 import {
-  ProfileInfoRequest,
+  GetProfileInfoRequest,
   ProfilePictureRequest,
   SetProfileInfoRequest,
   UpdateProfileInfoRequest,
@@ -33,7 +33,7 @@ export async function logout() {
  *
  */
 export async function getProfileData() {
-  return await ProfileInfoRequest();
+  return await GetProfileInfoRequest();
 }
 
 /**

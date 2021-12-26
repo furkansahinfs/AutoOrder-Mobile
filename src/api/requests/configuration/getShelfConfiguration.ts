@@ -1,6 +1,6 @@
 import api from '../../index';
 
-const getBackConfiguration = async () => {
+const getShelfConfiguration = async () => {
   const path = '/users/me';
 
   return await api.GET(path, {}).then((result: any) => {
@@ -12,4 +12,4 @@ const getBackConfiguration = async () => {
   });
 };
 
-export default getBackConfiguration;
+export default getShelfConfiguration;

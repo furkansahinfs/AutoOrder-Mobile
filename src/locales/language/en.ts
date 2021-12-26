@@ -27,7 +27,6 @@ const en = {
     password: 'Password',
     send: 'Send',
   },
-
   imageSelector: {
     closeModal: 'Close',
     selectPhoto: 'Select A Photo',
@@ -44,8 +43,10 @@ const en = {
     password: 'Password',
     signupButton: 'Sign Up',
   },
-
   mainPage: {
+    addressNotFound: 'You have to set an address in profile to send a photo.',
+    configurationNotFound: 'You have to configure your shelf in configuration to send a photo.',
+    pleaseWait: 'Please wait, photo will be analysed!',
     sendPhoto: 'Send Photo',
   },
   profilePage: {
@@ -76,6 +77,7 @@ const en = {
     confirmPassword: 'Confirm Password',
     confirmPasswordError: 'Password confirmation did not match.',
     email: 'Email',
+    emailInWrongFormat: 'Please text a valid email',
     emptyEmail: 'Email cannot be empty.',
     emptyName: 'Name cannot be empty.',
     emptyPassword: 'Password cannot be empty.',
@@ -84,11 +86,12 @@ const en = {
     name: 'Name',
     next: 'Next',
     password: 'Password',
+    passwordInWrongFormat: 'Please text a password at least has 8 characters',
     phone: 'Phone',
     signupBody: 'Take advantage of our application by registering.',
     signupButton: 'Sign Up',
     signupHead: 'Sign Up',
-    signupSuccessfull: 'Registered successfully. Please verify your account via the email sent.',
+    signupSuccessfull: 'Registered successfully.',
     surname: 'Surname',
   },
   tabbar: {

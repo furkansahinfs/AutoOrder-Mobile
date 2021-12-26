@@ -1,4 +1,7 @@
-export const getBackShelfItems = () => {
+import { GetShelfConfigurationRequest, SetShelfConfigurationRequest } from '../../../../api';
+
+export const getBackShelfItems = async () => {
+  const response = await GetShelfConfigurationRequest();
   return [
     { name: 'Milk', size: '1X', type: 'Back' },
     { name: 'Juice', size: '1X', type: 'Back' },
@@ -8,13 +11,25 @@ export const getBackShelfItems = () => {
   ];
 };
 
-export const getFrontShelfItems = () => {
+export const getFrontShelfItems = async () => {
+  const response = await GetShelfConfigurationRequest();
   return [
     { name: 'Egg', size: '2X', type: 'Front' },
     { name: 'Cheese', size: '2X', type: 'Front' },
     { name: 'Chocolate', size: '1X', type: 'Front' },
     { name: 'Olive', size: '1X', type: 'Front' },
-    { name: 'Butter', size: '2X', type: 'Front' },
+    { name: 'Tomato Paste', size: '1X', type: 'Front' },
+    { name: 'Baby Food', size: '1X', type: 'Front' },
+  ];
+};
+
+export const setShelfItems = async () => {
+  const response = await SetShelfConfigurationRequest();
+  return [
+    { name: 'Egg', size: '2X', type: 'Front' },
+    { name: 'Cheese', size: '2X', type: 'Front' },
+    { name: 'Chocolate', size: '1X', type: 'Front' },
+    { name: 'Olive', size: '1X', type: 'Front' },
     { name: 'Tomato Paste', size: '1X', type: 'Front' },
     { name: 'Baby Food', size: '1X', type: 'Front' },
   ];

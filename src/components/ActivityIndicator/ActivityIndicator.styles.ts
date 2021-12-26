@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   loading: {
@@ -9,6 +10,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  size: {
+    height: scale(40),
   },
 });
 

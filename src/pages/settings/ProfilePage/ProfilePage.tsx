@@ -12,7 +12,7 @@ import {
   Toast,
 } from '../../../components';
 import { I18N } from '../../../locales';
-import { FileProps, Images, ProfileData } from '../../../assets';
+import { FileProps, Images } from '../../../assets';
 import {
   getProfileData,
   pickImage,
@@ -33,7 +33,6 @@ import { navigate } from '../../../navigation';
 const ProfilePage = () => {
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
   const [photo, setPhoto] = useState<FileProps>();
-  const [profileData, setProfileData] = useState<ProfileData>();
   const [fullname, setFullname] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [address, setAddress] = useState<string>('');
@@ -73,7 +72,9 @@ const ProfilePage = () => {
   async function fetchProfile() {
     setShowLoading(true);
     const data = await getProfileData();
-    setProfileData(data);
+    setFullname(data?.full_name);
+    setPhone(data?.phone);
+    setAddress(data?.address);
     setIsProfileSet(data !== null);
     setProfilePictureUrl(data?.profile_picture);
     setShowLoading(false);
@@ -105,7 +106,7 @@ const ProfilePage = () => {
   async function save() {
     setShowLoading(true);
     const newProfileInfo = {
-      fullname,
+      full_name: fullname,
       phone,
       address,
     };
@@ -128,22 +129,25 @@ const ProfilePage = () => {
     {
       text: I18N.t('profilePage.name') + ' ' + I18N.t('profilePage.surname'),
       icon: 'user',
-      value: profileData?.name,
+      value: fullname,
+      keyboardType: 'default',
       func: (val: string) => setFullname(val),
       bigText: false,
     },
     {
       text: I18N.t('profilePage.phone'),
       icon: 'phone',
-      value: profileData?.phone,
+      value: phone,
+      keyboardType: 'phone-pad',
       func: (val: string) => setPhone(val),
       bigText: false,
     },
     {
       text: I18N.t('profilePage.address'),
-      icon: 'phone',
-      value: profileData?.phone,
-      func: (val: string) => setPhone(val),
+      icon: 'home',
+      value: address,
+      keyboardType: 'default',
+      func: (val: string) => setAddress(val),
       bigText: true,
     },
   ];
@@ -196,9 +200,9 @@ const ProfilePage = () => {
                 return element.bigText ? (
                   <View key={index} style={styles.textInput}>
                     <BigTextInput
-                      func={(value) => setAddress(value)}
+                      func={(value) => element.func(value)}
                       placeholderText={element.text}
-                      val={profileData?.address}
+                      val={element.value}
                     />
                   </View>
                 ) : (
@@ -206,7 +210,7 @@ const ProfilePage = () => {
                     <TextInput
                       func={(value) => element.func(value)}
                       iconName={element.icon}
-                      keyboardType={'default'}
+                      keyboardType={element.keyboardType !== 'default' ? 'phone-pad' : 'default'}
                       placeholderText={element.text}
                       secureText={false}
                       val={element.value}
@@ -226,22 +230,15 @@ const ProfilePage = () => {
                   text={I18N.t('profilePage.selectLanguage')}
                 />
               </View>
-              <View style={globalStyles.buttonMargin}>
-                <TextButton
-                  onPressFunction={() => navigate('Address')}
-                  text={I18N.t('profilePage.changeLocation')}
-                />
-              </View>
               <View style={[styles.theme, { borderColor: colors.border }]}>
                 <Text style={globalStyles.centerText}>{I18N.t('profilePage.darkTheme')}</Text>
                 <Switch value={isDarkModeOn} onValueChange={onToggleSwitch} />
               </View>
             </View>
-
-            {showLoading && <ActivityIndicator />}
           </View>
         </View>
       </ScrollView>
+      {showLoading && <ActivityIndicator />}
     </SafeAreaView>
   );
 };

@@ -14,6 +14,10 @@ function validate(password: string, confirmPassword: string) {
     errorMessage += I18N.t('signupPage.emptyPassword') + '\n';
   }
 
+  if (password.length < 8) {
+    errorMessage += I18N.t('signupPage.passwordInWrongFormat') + '\n';
+  }
+
   if (!isPasswordConfirmed) {
     errorMessage += I18N.t('signupPage.confirmPasswordError') + '\n';
   }

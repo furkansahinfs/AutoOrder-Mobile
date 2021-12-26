@@ -36,6 +36,7 @@ export interface RegionProps {
 export interface ProfileData {
   email?: string;
   id?: number;
+  full_name?: string;
   name?: string;
   phone?: string;
   profile_picture?: string;

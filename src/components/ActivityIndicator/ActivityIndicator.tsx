@@ -3,8 +3,18 @@ import { ActivityIndicator } from 'react-native-paper';
 import { useTheme } from '../../theme';
 import styles from './ActivityIndicator.styles';
 
-const Indicator = () => {
+interface IIndicator {
+  color?: string;
+}
+
+const Indicator = ({ color }: IIndicator) => {
   const { colors } = useTheme();
-  return <ActivityIndicator style={styles.loading} color={colors.button} />;
+  return (
+    <ActivityIndicator
+      size={styles.size.height}
+      style={styles.loading}
+      color={color ? color : colors.button}
+    />
+  );
 };
 export default Indicator;

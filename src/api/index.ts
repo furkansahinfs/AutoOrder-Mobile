@@ -3,11 +3,13 @@ export {
   LoginRequest,
   LogoutRequest,
   GetProfileInfoRequest,
+  GetShelfConfigurationRequest,
   NewActivationRequest,
   ProfilePictureRequest,
   RefreshToken,
   SendImageRequest,
   SetProfileInfoRequest,
+  SetShelfConfigurationRequest,
   SignupRequest,
   UpdateProfileInfoRequest,
 } from './requests';
@@ -18,7 +20,7 @@ import { API_URL } from '@env';
 console.log('API_URL : ', API_URL);
 const api = new ApiHelper({
   baseURL: API_URL,
-  timeout: 300,
+  timeout: 50000,
 });
 
 export default api;

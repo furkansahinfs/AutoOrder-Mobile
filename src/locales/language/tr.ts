@@ -11,7 +11,6 @@ const tr = {
     frontShelf: 'Ön Raf',
     header: 'Konfigürasyon',
   },
-
   dropdownMenu: {
     noChoice: 'Seçenek Yok',
   },
@@ -45,6 +44,10 @@ const tr = {
     signupButton: 'Kayıt Ol',
   },
   mainPage: {
+    addressNotFound: 'Fotoğrafı gönderebilmek için profil kısmından adresinizi tanımlayın.',
+    configurationNotFound:
+      'Fotoğrafı gönderebilmek için konfigürasyon kısmından raf konfigürasyonunuzu yapın..',
+    pleaseWait: 'Please wait, photo will be analysed!',
     sendPhoto: 'Fotoğrafı Gönder',
   },
   profilePage: {
@@ -75,16 +78,18 @@ const tr = {
     confirmPassword: 'Parolayı Onayla',
     confirmPasswordError: 'Parola doğrulama eşleşmedi.',
     email: 'E-posta',
+    emailInWrongFormat: 'Lütfen geçerli bir e-posta adresi girin.',
     emptyEmail: 'E-posta boş olamaz.',
     emptyPassword: 'Parola boş olamaz',
     name: 'Ad',
     next: 'İleri',
     password: 'Parola',
+    passwordInWrongFormat: 'Lütfen en az 8 karakterli bir parola girin.',
     phone: 'Telefon',
     signupBody: 'Kayıt olarak uygulamamızdan faydalanın.',
     signupButton: 'Kayıt Ol',
     signupHead: 'Kayıt Olun',
-    signupSuccessfull: 'Kayıt başarılı. Lütfen gönderilen email üzerinden hesabınızı doğrulayın.',
+    signupSuccessfull: 'Kayıt başarılı.',
     surname: 'Soyad',
   },
   tabbar: {
