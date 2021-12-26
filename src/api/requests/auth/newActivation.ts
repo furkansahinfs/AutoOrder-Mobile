@@ -8,9 +8,9 @@ const newActivation = async (email: string) => {
 
   return await api.POST(path, json, {}).then((result: any) => {
     if (result.status === 200) {
-      return result.data.message;
+      return result.data;
     } else {
-      return result.data.error;
+      return result.error;
     }
   });
 };

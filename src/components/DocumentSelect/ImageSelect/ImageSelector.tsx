@@ -7,10 +7,11 @@ import { requestCameraPermission } from './ImageSelector.helper';
 import { Icon, TextButton } from '../..';
 import ModalView from './Subcomponents/ModalView';
 import { I18N } from '../../../locales';
+import { FileProps } from '../../../assets';
 
 interface ImageSelectorProps {
-  file: any;
-  setFile: (file: any) => void;
+  file: FileProps | null;
+  setFile: (file: FileProps | null) => void;
 }
 
 const ImageSelector = ({ file, setFile }: ImageSelectorProps) => {
@@ -26,7 +27,7 @@ const ImageSelector = ({ file, setFile }: ImageSelectorProps) => {
       const response = await ImagePicker.launchCamera(options);
       console.log('launchCamera', response);
       if (response.assets !== undefined && response.assets?.length > 0) {
-        setFile(response.assets[0].uri ? response.assets[0] : null);
+        setFile(response.assets[0].uri ? getFilePropsObject(response.assets[0]) : null);
       }
     }
   };
@@ -35,9 +36,17 @@ const ImageSelector = ({ file, setFile }: ImageSelectorProps) => {
     const response = await ImagePicker.launchImageLibrary(options);
     console.log('launchLibrary', response);
     if (response.assets !== undefined && response.assets?.length > 0) {
-      setFile(response.assets[0].uri ? response.assets[0] : null);
+      setFile(response.assets[0].uri ? getFilePropsObject(response.assets[0]) : null);
     }
   };
+
+  function getFilePropsObject(selectedFile: any) {
+    return {
+      uri: selectedFile.uri,
+      type: selectedFile.type,
+      name: selectedFile.fileName,
+    };
+  }
 
   const renderFileUri = () => {
     return (

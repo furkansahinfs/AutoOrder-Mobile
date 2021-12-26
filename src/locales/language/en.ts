@@ -49,7 +49,8 @@ const en = {
     sendPhoto: 'Send Photo',
   },
   profilePage: {
-    changeAddress: 'Change Address',
+    address: 'Address',
+    changeLocation: 'Change Location',
     darkTheme: 'Dark Theme',
     email: 'Email',
     name: 'Name',

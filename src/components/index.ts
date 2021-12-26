@@ -6,5 +6,5 @@ export { DropdownMenu } from './Dropdown';
 export { Header } from './Header';
 export { DefaultIcon } from './Icon/DefaultIcon';
 export { Icon } from './Icon';
-export { DisabledTextInput, TextInput } from './Input';
+export { BigTextInput, DisabledTextInput, TextInput } from './Input';
 export { Toast } from './Notify';

@@ -1,12 +1,7 @@
+import { FileProps } from '../../../assets';
 import api from '../../index';
 
-interface PhotoProps {
-  uri: string;
-  type: string;
-  name: string;
-}
-
-const sendImage = async (photo: PhotoProps) => {
+const sendImage = async (photo: FileProps) => {
   const path = '/image';
   const body = new FormData();
   body.append('image', photo);

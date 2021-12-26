@@ -48,7 +48,8 @@ const tr = {
     sendPhoto: 'Fotoğrafı Gönder',
   },
   profilePage: {
-    changeAddress: 'Adres Değiştir',
+    address: 'Adres',
+    changeLocation: 'Lokasyon Değiştir',
     darkTheme: 'Koyu Tema',
     email: 'E-posta',
     name: 'Ad',

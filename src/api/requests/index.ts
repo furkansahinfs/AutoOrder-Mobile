@@ -8,7 +8,7 @@ export {
 } from './auth/';
 export { SendImageRequest } from './image';
 export {
-  ProfileInfoRequest,
+  GetProfileInfoRequest,
   ProfilePictureRequest,
   SetProfileInfoRequest,
   UpdateProfileInfoRequest,

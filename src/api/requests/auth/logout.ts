@@ -11,7 +11,7 @@ const logout = async () => {
     if (result.status === 200) {
       return true;
     } else {
-      return result.data.error;
+      return result.error;
     }
   });
 };

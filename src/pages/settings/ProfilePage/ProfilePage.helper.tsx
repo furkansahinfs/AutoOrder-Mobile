@@ -5,15 +5,9 @@ import {
   SetProfileInfoRequest,
   UpdateProfileInfoRequest,
 } from '../../../api';
-import { ProfileData } from '../../../assets';
+import { FileProps, ProfileData } from '../../../assets';
 import { deleteUserCredentials, loadThemeToRedux, setTheme } from '../../../helpers';
 import { navigationReset } from '../../../navigation';
-
-export interface PhotoProps {
-  uri: string;
-  type: string;
-  name: string;
-}
 
 /**
  * Remove the user credentials from the AsyncStorage
@@ -22,45 +16,17 @@ export interface PhotoProps {
 export async function logout() {
   await deleteUserCredentials();
   navigationReset('Splash');
+
+  // Delete device id from db
   /*await LogoutRequest().then(async (result: any) => {
     if (result) {
       await deleteUserCredentials();
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'Splash' }],
-      });
+      navigationReset('Splash');
     } else {
       Toast(result, false);
     }
   });*/
 }
-
-/*
-export function getLabel(
-  label:   { text:string, value: string, editable: boolean },
-  setProfileData:
-  colors: any,
-  index: number,
-) {
-  return (
-    <View style={styles.labelView} key={index}>
-        <TextInput
-              func={(value) => setEmail(value)}
-              iconName={"user"}
-              keyboardType={"default"}
-              maxLength={undefined}
-              placeholderText={I18N.t("email")}
-              secureText={false}
-              val={email}
-            />
-      <Text style={[styles.labelHead, { color: colors.text }]}>{labelHead}</Text>
-      <Text style={[styles.labelInfo, { color: colors.text }]}>
-        {labelInfo ? labelInfo : I18N.t('profilePage.noInfo')}
-      </Text>
-    </View>
-  );
-}
-*/
 
 /**
  * Get profile information from api
@@ -92,10 +58,10 @@ export async function pickImage() {
 
 /**
  * Send the selected image to the API to save image as profile picture
- * @param photo PhotoProps
+ * @param photo FileProps
  * @returns boolean
  */
-export async function setPicture(photo: PhotoProps | undefined) {
+export async function setPicture(photo: FileProps | undefined) {
   if (photo !== undefined) {
     return await ProfilePictureRequest(photo);
   }

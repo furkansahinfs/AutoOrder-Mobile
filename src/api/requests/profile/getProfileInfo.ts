@@ -1,6 +1,6 @@
 import api from '../../index';
 
-const profileInfo = async () => {
+const getProfileInfo = async () => {
   const path = '/userinformation';
 
   return await api.GET(path, {}).then((result: any) => {
@@ -12,4 +12,4 @@ const profileInfo = async () => {
   });
 };
 
-export default profileInfo;
+export default getProfileInfo;

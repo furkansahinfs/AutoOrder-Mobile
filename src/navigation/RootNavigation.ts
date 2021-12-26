@@ -6,9 +6,9 @@ export function navigate(name: string, params?: any) {
   navigationRef.current?.navigate(name, params);
 }
 
-export function navigationReset(name: string) {
+export function navigationReset(name: string, params?: any) {
   navigationRef.current?.reset({
     index: 0,
-    routes: [{ name }],
+    routes: [{ name, params }],
   });
 }

@@ -2,8 +2,8 @@ export {
   ForgetPasswordRequest,
   LoginRequest,
   LogoutRequest,
+  GetProfileInfoRequest,
   NewActivationRequest,
-  ProfileInfoRequest,
   ProfilePictureRequest,
   RefreshToken,
   SendImageRequest,
@@ -15,10 +15,10 @@ export {
 import { ApiHelper } from './serverConnections/';
 import { API_URL } from '@env';
 
-console.log(API_URL);
+console.log('API_URL : ', API_URL);
 const api = new ApiHelper({
-  baseURL: 'http://ec2-3-123-36-114.eu-central-1.compute.amazonaws.com:8080/api/v1',
-  timeout: 50000,
+  baseURL: API_URL,
+  timeout: 300,
 });
 
 export default api;

@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { Toast } from '../../components';
 import { ReRequest } from '../requests';
 
 export interface ApiHelperOptions {
@@ -52,8 +53,7 @@ export default class ApiHelper {
         return this.controlResponse(response);
       })
       .catch((error: any) => {
-        console.log(error);
-        return this.controlResponse(error.response);
+        return this.catchHandler(error);
       });
   };
 
@@ -64,8 +64,7 @@ export default class ApiHelper {
         return this.controlResponse(response);
       })
       .catch((error: any) => {
-        console.log(error);
-        return this.controlResponse(error.response);
+        return this.catchHandler(error);
       });
   };
 
@@ -77,8 +76,7 @@ export default class ApiHelper {
         return this.controlResponse(response);
       })
       .catch((error: any) => {
-        console.log(error);
-        return this.controlResponse(error.response);
+        return this.catchHandler(error);
       });
   };
 
@@ -89,8 +87,7 @@ export default class ApiHelper {
         return this.controlResponse(response);
       })
       .catch((error: any) => {
-        console.log(error);
-        return this.controlResponse(error.response);
+        return this.catchHandler(error);
       });
   };
 
@@ -101,9 +98,22 @@ export default class ApiHelper {
         return this.controlResponse(response);
       })
       .catch((error: any) => {
-        console.log(error);
-        return this.controlResponse(error.response);
+        return this.catchHandler(error);
       });
+  };
+
+  catchHandler = (error: any) => {
+    if (error?.response) {
+      return this.controlResponse(error.response);
+    } else {
+      Toast(error.message, false);
+      return {
+        data: null,
+        error: error.message,
+        success: false,
+        status: 500,
+      };
+    }
   };
 
   controlResponse = async (response: any) => {

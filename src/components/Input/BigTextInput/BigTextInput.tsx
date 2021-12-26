@@ -1,36 +1,25 @@
 import React from 'react';
-import { KeyboardTypeOptions } from 'react-native';
 import { TextInput as NativeTextInput } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useTheme } from '../../../theme';
-import styles from './TextInput.styles';
+import styles from './BigTextInput.styles';
 
-interface TextInputProps {
+interface BigTextInputProps {
   placeholderText: string;
   val: string | undefined;
-  keyboardType: KeyboardTypeOptions;
+  maxLength?: number;
   func: (text: string) => void;
-  secureText: boolean;
-  iconName: string;
 }
 
-const TextInput = ({
-  placeholderText,
-  val,
-  keyboardType,
-  func,
-  secureText,
-  iconName,
-}: TextInputProps) => {
+const BigTextInput = ({ placeholderText, val, func, maxLength }: BigTextInputProps) => {
   const { colors } = useTheme();
   return (
     <NativeTextInput
       mode="outlined"
       label={placeholderText}
       value={val}
-      keyboardType={keyboardType}
-      secureTextEntry={secureText}
       style={styles.input}
+      maxLength={maxLength !== undefined ? maxLength : 500}
+      multiline={true}
       theme={{
         colors: {
           background: colors.textInput,
@@ -41,13 +30,8 @@ const TextInput = ({
         roundness: 8,
       }}
       onChangeText={func}
-      left={
-        <NativeTextInput.Icon
-          name={() => <Icon name={iconName} color="#7999FD" size={styles.iconSize.height} />}
-        />
-      }
     />
   );
 };
 
-export default TextInput;
+export default BigTextInput;

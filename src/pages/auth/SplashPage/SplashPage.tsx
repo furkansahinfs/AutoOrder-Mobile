@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import {
   isAuthenticated,
   getLanguage,
@@ -10,12 +9,12 @@ import {
 import styles from './SplashPage.styles';
 import OneSignal from 'react-native-onesignal';
 import { NotificationEntity } from '../../../assets/interfaces';
+import { navigate, navigationReset } from '../../../navigation';
 
 const SplashPage = () => {
   let isAuth = false;
   let hasSelectedLang = false;
   let loadMain = false;
-  const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
@@ -45,7 +44,7 @@ const SplashPage = () => {
         sent_at: new Date().toISOString(),
         sent_by: 'OneSignal',
       };
-      navigation.navigate('Notification', {
+      navigate('Notification', {
         notification: notificationEntity,
       });
     });
@@ -91,26 +90,17 @@ const SplashPage = () => {
    */
   function navigateUser() {
     if (!hasSelectedLang) {
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'Language', params: { page: 'Splash' } }],
-      });
+      navigationReset('Language', { page: 'Splash' });
     } else if (!isAuth) {
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'Login' }],
-      });
+      navigationReset('Login');
     } else if (loadMain) {
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'Main' }],
-      });
+      navigationReset('Main');
     }
   }
 
   return (
     <View style={styles.view}>
-      <Text style={styles.headText}>Template</Text>
+      <Text style={styles.headText}>Auto Order</Text>
     </View>
   );
 };
