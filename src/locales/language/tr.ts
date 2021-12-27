@@ -66,12 +66,15 @@ const tr = {
   shelfConfigurationPage: {
     adjustConfiguration: 'Konfigürasyonu Ayarla',
     Back: 'Arka',
+    configurationSetMessage: 'Konfigürasyon ayarlandı.',
     Front: 'Ön',
     header: 'Raf Konfigürasyon',
     noData: 'Konfigürasyon verisi bulunamadı',
     selectShelfItems: 'Raf Ürünleri Seç',
+    shelfSizeError: 'Toplam boyut 10X boyutunu geçemez.',
     size: 'Ürün Boyutu',
     totalSize: 'Toplam Boyut',
+    userItemsNotFound: 'Konfigürasyon ürünleri bulunamadı.',
   },
   signupPage: {
     back: 'Geri',

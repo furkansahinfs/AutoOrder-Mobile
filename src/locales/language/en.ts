@@ -65,12 +65,15 @@ const en = {
   shelfConfigurationPage: {
     adjustConfiguration: 'Adjust Configuration',
     Back: 'Back',
+    configurationSetMessage: 'Configuration is set.',
     Front: 'Front',
     header: 'Shelf Configuration',
     noData: 'There is no configuration data',
     selectShelfItems: 'Select Shelf Items',
+    shelfSizeError: 'Total size can not bigger than 10X',
     size: 'Item Size',
     totalSize: 'Total Size',
+    userItemsNotFound: 'Configuration items could not be found',
   },
   signupPage: {
     back: 'Back',

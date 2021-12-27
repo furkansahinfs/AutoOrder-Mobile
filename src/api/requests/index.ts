@@ -6,7 +6,12 @@ export {
   RefreshToken,
   SignupRequest,
 } from './auth/';
-export { GetShelfConfigurationRequest, SetShelfConfigurationRequest } from './configuration';
+export {
+  GetItemsRequest,
+  GetShelfConfigurationRequest,
+  SetShelfConfigurationRequest,
+  UpdateShelfConfigurationRequest,
+} from './configuration';
 export { SendImageRequest } from './image';
 export {
   GetProfileInfoRequest,

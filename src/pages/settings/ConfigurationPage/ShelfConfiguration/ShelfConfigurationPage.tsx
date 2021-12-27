@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
+import { ActivityIndicator } from 'react-native-paper';
 import { Images, ItemProps } from '../../../../assets';
 import { Header, Icon, TextButton } from '../../../../components';
 import { I18N } from '../../../../locales';
 import { stylesGlobal } from '../../../../styles';
 import { useTheme } from '../../../../theme';
 import {
-  getBackShelfItems,
-  getFrontShelfItems,
   getItemNameWoutSpace,
+  getShelfItems,
+  getUserShelfItems,
+  setShelf,
 } from './ShelfConfiguration.helper';
 import styles from './ShelfConfigurationPage.styles';
 import ModalView from './Subcomponents/ModalView';
@@ -18,8 +20,10 @@ const ShelfConfigurationPage = ({ route }) => {
   const shelfType = route.params.shelfType;
   const [shelfChoices, setShelfChoices] = useState<Array<ItemProps>>([]);
   const [shelfItems, setShelfItems] = useState<Array<ItemProps>>([]);
+  const [isConfigurationEmpty, setIsConfigurationEmpty] = useState<boolean>(true);
   const [totalSize, setTotalSize] = useState<number>(0);
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
+  const [showLoading, setShowLoading] = useState<boolean>(true);
   const { colors } = useTheme();
   const globalStyles = stylesGlobal(colors);
 
@@ -32,24 +36,25 @@ const ShelfConfigurationPage = ({ route }) => {
 
   const init = async () => {
     let items = [];
-    if (shelfType === 'Back') {
-      items = getBackShelfItems();
-    } else {
-      items = getFrontShelfItems();
-    }
+    let userShelfChoices = await getUserShelfItems(shelfType.toLowerCase());
+    setShelfChoices(userShelfChoices);
+    setIsConfigurationEmpty(userShelfChoices.length === 0);
+    items = await getShelfItems(shelfType.toLowerCase());
     setShelfItems(items);
+    calculateTotalSize(userShelfChoices);
+    setShowLoading(false);
   };
 
-  const calculateTotalSize = () => {
+  const calculateTotalSize = (userShelfChoices: Array<ItemProps>) => {
     let total = 0;
-    shelfChoices.forEach((element: ItemProps) => {
+    userShelfChoices.forEach((element: ItemProps) => {
       total += parseInt(element.size.slice(0, -1), 10);
     });
 
     setTotalSize(total);
   };
 
-  const emptyView = (
+  const emptyView = showLoading ? null : (
     <View style={styles.nodataView}>
       <Image source={Images.nodata} style={styles.nodataImage} />
       <Text style={[globalStyles.labelBigger, globalStyles.centerText, { color: colors.text }]}>
@@ -70,6 +75,7 @@ const ShelfConfigurationPage = ({ route }) => {
         rightIcon={<Icon name={'star'} onPressFunction={() => setModalVisible(!isModalVisible)} />}
       />
       <View style={styles.view}>
+        {showLoading && <ActivityIndicator />}
         <FlatList
           data={shelfChoices}
           style={[styles.flatlist, { backgroundColor: colors.background2 }]}
@@ -94,7 +100,7 @@ const ShelfConfigurationPage = ({ route }) => {
           ListEmptyComponent={emptyView}
         />
 
-        {shelfChoices.length > 0 ? (
+        {shelfChoices.length > 0 || !isConfigurationEmpty ? (
           <View
             style={[
               styles.totalSizeView,
@@ -108,7 +114,9 @@ const ShelfConfigurationPage = ({ route }) => {
               {I18N.t('shelfConfigurationPage.totalSize') + ' : ' + totalSize + '/10x'}
             </Text>
             <TextButton
-              onPressFunction={() => console.log('aaa')}
+              onPressFunction={async () =>
+                await setShelf({ totalSize, shelfChoices, shelfType, isConfigurationEmpty })
+              }
               text={I18N.t('shelfConfigurationPage.adjustConfiguration')}
               hasMarginVertical={true}
             />
@@ -121,7 +129,7 @@ const ShelfConfigurationPage = ({ route }) => {
           setShelfChoices={setShelfChoices}
           shelfChoices={shelfChoices}
           shelfItems={shelfItems}
-          closeModalFunction={calculateTotalSize}
+          closeModalFunction={() => calculateTotalSize(shelfChoices)}
         />
       </View>
     </SafeAreaView>

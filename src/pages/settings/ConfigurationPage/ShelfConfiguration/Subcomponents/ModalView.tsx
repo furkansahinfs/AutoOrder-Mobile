@@ -43,7 +43,6 @@ const ModalView = ({
             onPressFunction={() => {
               setModalVisible(!isModalVisible);
               closeModalFunction();
-              console.log(shelfChoices);
             }}
           />
         </View>

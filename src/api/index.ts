@@ -2,6 +2,7 @@ export {
   ForgetPasswordRequest,
   LoginRequest,
   LogoutRequest,
+  GetItemsRequest,
   GetProfileInfoRequest,
   GetShelfConfigurationRequest,
   NewActivationRequest,
@@ -12,6 +13,7 @@ export {
   SetShelfConfigurationRequest,
   SignupRequest,
   UpdateProfileInfoRequest,
+  UpdateShelfConfigurationRequest,
 } from './requests';
 
 import { ApiHelper } from './serverConnections/';

@@ -1,7 +1,7 @@
 import api from '../../index';
 
-const setShelfConfiguration = async (shelfType: string, items: any) => {
-  const path = '/configuration/store/' + shelfType;
+const updateShelfConfiguration = async (shelfType: string, items: any) => {
+  const path = '/configuration/update/' + shelfType;
 
   return await api.POST(path, items, {}).then((result: any) => {
     if (result.status === 200) {
@@ -12,4 +12,4 @@ const setShelfConfiguration = async (shelfType: string, items: any) => {
   });
 };
 
-export default setShelfConfiguration;
+export default updateShelfConfiguration;

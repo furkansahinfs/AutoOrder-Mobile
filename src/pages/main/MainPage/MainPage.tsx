@@ -12,7 +12,6 @@ const MainPage = () => {
 
   const [showLoading, setShowLoading] = useState<boolean>(false);
   const { colors } = useTheme();
-  //TODO address control
 
   /**
    * The function send the shelf photo to the API
@@ -22,8 +21,8 @@ const MainPage = () => {
     const isAuthToSendPhoto = await canSendPhoto();
     if (isAuthToSendPhoto.result) {
       setShowLoading(true);
-      //await sendPhoto(photo);
       Toast(I18N.t('mainPage.pleaseWait'), true);
+      await sendPhoto(photo, setShowLoading);
     } else {
       Toast(isAuthToSendPhoto.message, true);
       setShowLoading(false);

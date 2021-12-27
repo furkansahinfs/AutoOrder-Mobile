@@ -10,6 +10,10 @@ export interface ItemProps {
   type: string;
 }
 
+export interface ItemDTOProps {
+  name: string;
+}
+
 export interface NotificationEntity {
   content: string | undefined | null;
   heading: string | undefined | null;
