@@ -46,8 +46,16 @@ const en = {
   mainPage: {
     addressNotFound: 'You have to set an address in profile to send a photo.',
     configurationNotFound: 'You have to configure your shelf in configuration to send a photo.',
+    imageNotAnalysed: "Image can't be analysed!",
+    orderNotCreated: "Order can't be created",
     pleaseWait: 'Please wait, photo will be analysed!',
     sendPhoto: 'Send Photo',
+  },
+  orderDetailPage: {
+    header: 'Order Detail',
+    noData: 'There is no order data',
+    size: 'Item Size',
+    type: 'Item Type',
   },
   profilePage: {
     address: 'Address',

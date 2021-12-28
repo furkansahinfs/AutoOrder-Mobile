@@ -4,6 +4,7 @@ import {
   ForgetPasswordAndActivationPage,
   LanguagePage,
   LoginPage,
+  OrderDetailPage,
   ShelfConfigurationPage,
   SignupPage,
   SplashPage,
@@ -29,6 +30,7 @@ function MyStack() {
 
       <Stack.Screen name="Address" component={AddressPage} />
       <Stack.Screen name="ShelfConfiguration" component={ShelfConfigurationPage} />
+      <Stack.Screen name="OrderDetail" component={OrderDetailPage} />
     </Stack.Navigator>
   );
 }

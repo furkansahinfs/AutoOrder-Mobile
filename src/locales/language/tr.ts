@@ -47,8 +47,16 @@ const tr = {
     addressNotFound: 'Fotoğrafı gönderebilmek için profil kısmından adresinizi tanımlayın.',
     configurationNotFound:
       'Fotoğrafı gönderebilmek için konfigürasyon kısmından raf konfigürasyonunuzu yapın..',
+    imageNotAnalysed: 'Resim analiz edilemedi!',
+    orderNotCreated: 'Sipariş oluşturulamadı!',
     pleaseWait: 'Please wait, photo will be analysed!',
     sendPhoto: 'Fotoğrafı Gönder',
+  },
+  orderDetailPage: {
+    header: 'Sipraiş Detayı',
+    noData: 'Sipariş verisi yok',
+    size: 'Ürün Boyutu',
+    type: 'Ürün Türü',
   },
   profilePage: {
     address: 'Adres',

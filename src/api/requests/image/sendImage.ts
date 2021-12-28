@@ -12,7 +12,7 @@ const sendImage = async (photo: FileProps) => {
     })
     .then((result: any) => {
       if (result.status === 200) {
-        return true;
+        return result.data;
       } else {
         return false;
       }
