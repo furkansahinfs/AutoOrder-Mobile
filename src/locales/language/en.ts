@@ -51,6 +51,9 @@ const en = {
     pleaseWait: 'Please wait, photo will be analysed!',
     sendPhoto: 'Send Photo',
   },
+  notificationsPage: {
+    notificationsHeader: 'Notifications',
+  },
   orderDetailPage: {
     header: 'Order Detail',
     noData: 'There is no order data',

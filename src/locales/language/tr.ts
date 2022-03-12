@@ -52,6 +52,9 @@ const tr = {
     pleaseWait: 'Please wait, photo will be analysed!',
     sendPhoto: 'Fotoğrafı Gönder',
   },
+  notificationsPage: {
+    notificationsHeader: 'Bildirimler',
+  },
   orderDetailPage: {
     header: 'Sipraiş Detayı',
     noData: 'Sipariş verisi yok',

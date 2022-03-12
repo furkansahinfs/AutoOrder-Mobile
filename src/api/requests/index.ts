@@ -14,6 +14,12 @@ export {
 } from './configuration';
 export { SendImageRequest } from './image';
 export {
+  GetNotificationCount,
+  GetNotificationWithId,
+  GetNotifications,
+  ReadNotification,
+} from './notification';
+export {
   GetProfileInfoRequest,
   ProfilePictureRequest,
   SetProfileInfoRequest,

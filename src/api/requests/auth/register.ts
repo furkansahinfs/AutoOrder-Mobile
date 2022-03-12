@@ -1,4 +1,4 @@
-import { SignupProps } from '../../../assets';
+import { IResponse, SignupProps } from '../../../assets';
 import api from '../../index';
 
 const register = async ({ email, password }: SignupProps) => {
@@ -7,7 +7,7 @@ const register = async ({ email, password }: SignupProps) => {
     email: email,
     password: password,
   };
-  return await api.POST(path, json, {}).then((result: any) => {
+  return await api.POST(path, json, {}).then((result: IResponse) => {
     if (result.success) {
       return result.data;
     } else {

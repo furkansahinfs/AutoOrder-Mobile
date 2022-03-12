@@ -1,4 +1,4 @@
-import { ProfileData } from '../../../assets';
+import { IResponse, ProfileData } from '../../../assets';
 import api from '../../index';
 
 const updateProfileInfo = async (info: ProfileData) => {
@@ -9,7 +9,7 @@ const updateProfileInfo = async (info: ProfileData) => {
     phone: info.phone,
     address: info.address,
   };
-  return await api.POST(path, json, {}).then((result: any) => {
+  return await api.POST(path, json, {}).then((result: IResponse) => {
     if (result.status === 200) {
       return true;
     } else {

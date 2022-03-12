@@ -54,3 +54,10 @@ export interface SignupProps {
   phone?: string;
   surname?: string;
 }
+
+export interface IResponse {
+  data: any;
+  error?: string;
+  success: boolean;
+  status: number;
+}

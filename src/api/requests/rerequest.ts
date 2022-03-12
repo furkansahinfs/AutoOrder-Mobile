@@ -13,6 +13,12 @@ const controlResponse = async (response: any) => {
     console.log('Rerequest delete', response);
     await deleteUserCredentials();
     navigate('Login');
+    return {
+      data: response.data,
+      error: response.data.message !== undefined ? response.data.message : 'Error',
+      success: false,
+      status: response.status,
+    };
   } else {
     return {
       data: response.data,

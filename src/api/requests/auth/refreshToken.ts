@@ -1,6 +1,7 @@
 import api from '../../index';
 import store from '../../../store';
 import { updateDeviceId } from '../../../helpers';
+import { IResponse } from '../../../assets';
 
 async function getDeviceId() {
   let device_id = store.getState().userCredentials.deviceid;
@@ -17,7 +18,7 @@ const refreshToken = async (access_token: string) => {
     token: access_token,
   };
 
-  return await api.POST(path, json, {}).then((result: any) => {
+  return await api.POST(path, json, {}).then((result: IResponse) => {
     console.log(result);
     if (result.status === 200) {
       return result.data;

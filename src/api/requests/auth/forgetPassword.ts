@@ -1,3 +1,4 @@
+import { IResponse } from '../../../assets';
 import api from '../../index';
 
 const forgetPassword = async (email: string) => {
@@ -5,7 +6,7 @@ const forgetPassword = async (email: string) => {
   const json = {
     email: email,
   };
-  return await api.POST(path, json, {}).then((result: any) => {
+  return await api.POST(path, json, {}).then((result: IResponse) => {
     if (result.status === 200) {
       return result.data;
     } else {

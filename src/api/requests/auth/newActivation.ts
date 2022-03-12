@@ -1,3 +1,4 @@
+import { IResponse } from '../../../assets';
 import api from '../../index';
 
 const newActivation = async (email: string) => {
@@ -6,7 +7,7 @@ const newActivation = async (email: string) => {
     email: email,
   };
 
-  return await api.POST(path, json, {}).then((result: any) => {
+  return await api.POST(path, json, {}).then((result: IResponse) => {
     if (result.status === 200) {
       return result.data;
     } else {
