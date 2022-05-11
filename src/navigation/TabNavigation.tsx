@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ConfigurationPage, MainPage, ProfilePage } from '../pages';
+import { ConfigurationPage, MainPage, OrdersPage, ProfilePage } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './TabNavigation.style';
@@ -46,6 +46,20 @@ function MainPageTabs() {
           tabBarLabel: I18N.t('tabbar.configuration'),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="tools" color={color} size={styles.iconSize.height} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Orders"
+        component={OrdersPage}
+        listeners={({ navigation }) => ({
+          blur: () => navigation.setParams({ screen: undefined }),
+        })}
+        options={{
+          unmountOnBlur: true,
+          tabBarLabel: I18N.t('tabbar.orders'),
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="basket" color={color} size={styles.iconSize.height} />
           ),
         }}
       />

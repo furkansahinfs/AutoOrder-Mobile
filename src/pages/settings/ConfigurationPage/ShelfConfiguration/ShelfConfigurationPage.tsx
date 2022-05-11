@@ -3,7 +3,7 @@ import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
 import { ActivityIndicator } from 'react-native-paper';
 import { Images, ItemProps } from '../../../../assets';
-import { Header, Icon, TextButton } from '../../../../components';
+import { FlatTextInput, Header, Icon, TextButton } from '../../../../components';
 import { I18N } from '../../../../locales';
 import { stylesGlobal } from '../../../../styles';
 import { useTheme } from '../../../../theme';
@@ -88,6 +88,17 @@ const ShelfConfigurationPage = ({ route }) => {
                   source={Images.items[getItemNameWoutSpace(item.name)]}
                   style={styles.image}
                 />
+                <View style={styles.cardItem}>
+                  <FlatTextInput
+                    func={(val) => {
+                      shelfChoices[0].expirationTime = parseInt(val, 10);
+                    }}
+                    placeholderText={I18N.t('shelfConfigurationPage.expiration')}
+                    secureText={false}
+                    val={item.expirationTime !== undefined ? item.expirationTime.toString() : ''}
+                    keyboardType={'numeric'}
+                  />
+                </View>
                 <View style={styles.cardItem}>
                   <Text style={globalStyles.labelBigger}>{item.name}</Text>
                   <Text style={globalStyles.labelSmaller}>

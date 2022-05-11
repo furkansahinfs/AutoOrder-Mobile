@@ -3,6 +3,7 @@ const images = {
   en: require('./Flag/en.png'),
   nodata: require('./nodata.png'),
   tr: require('./Flag/tr.png'),
+  foodOrder: require('./foodOrder.png'),
   items: {
     BabyFood: require('./items/BabyFood.jpg'),
     Butter: require('./items/Butter.jpg'),

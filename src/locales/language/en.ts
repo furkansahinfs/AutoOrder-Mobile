@@ -54,6 +54,14 @@ const en = {
   notificationsPage: {
     notificationsHeader: 'Notifications',
   },
+  orderItem: {
+    order: 'Order',
+  },
+  ordersPage: {
+    noData: 'There is no order',
+    size: 'Item Size',
+    type: 'Item Type',
+  },
   orderDetailPage: {
     header: 'Order Detail',
     noData: 'There is no order data',
@@ -78,6 +86,7 @@ const en = {
     Back: 'Back',
     configurationSetMessage: 'Configuration is set.',
     Front: 'Front',
+    expiration: 'Day for Expiration',
     header: 'Shelf Configuration',
     noData: 'There is no configuration data',
     selectShelfItems: 'Select Shelf Items',
@@ -112,6 +121,7 @@ const en = {
     main: 'Main',
     profile: 'Profile',
     configuration: 'Configuration',
+    orders: 'Orders',
   },
   days: {
     monday: 'Monday',

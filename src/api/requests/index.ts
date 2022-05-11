@@ -19,6 +19,7 @@ export {
   GetNotifications,
   ReadNotification,
 } from './notification';
+export { GetOrderDetailRequest, GetOrdersRequest } from './order';
 export {
   GetProfileInfoRequest,
   ProfilePictureRequest,

@@ -6,6 +6,8 @@ export {
   GetNotificationCount,
   GetNotificationWithId,
   GetNotifications,
+  GetOrderDetailRequest,
+  GetOrdersRequest,
   GetProfileInfoRequest,
   GetShelfConfigurationRequest,
   NewActivationRequest,

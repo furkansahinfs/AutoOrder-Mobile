@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
-import { ActivityIndicator } from 'react-native-paper';
-import { Images, ItemProps } from '../../../assets';
+import { FlatList, Image, RefreshControl, SafeAreaView, Text, View } from 'react-native';
+import { Images, ItemProps, OrderItemDetailProp } from '../../../assets';
 import { Header } from '../../../components';
 import { I18N } from '../../../locales';
 import { stylesGlobal } from '../../../styles';
 import { useTheme } from '../../../theme';
-import { getShelfItems, ItemObject } from './OrderDetailPage.helper';
+import { getOrderDetail, getShelfItems, ItemObject } from './OrderDetailPage.helper';
 import styles from './OrderDetailPage.styles';
 
 const OrderDetailPage = ({ route }) => {
-  const order = route.params.order;
-  const [orderItems, setOrderItems] = useState<Array<ItemProps>>([]);
+  const orderId = route.params.id;
+  const [orderItems, setOrderItems] = useState<Array<OrderItemDetailProp>>([]);
   const [allItems, setAllItems] = useState<Array<ItemProps>>([]);
   const [showLoading, setShowLoading] = useState<boolean>(true);
   const { colors } = useTheme();
@@ -21,13 +20,14 @@ const OrderDetailPage = ({ route }) => {
     (async () => {
       await init();
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const init = async () => {
-    setOrderItems(order);
+    const orderDetailResult = await getOrderDetail(orderId);
+    if (orderDetailResult?.data) {
+      setOrderItems(orderDetailResult.data);
+    }
     const allItemsGotten = await getShelfItems();
-    console.log(route.params);
     setAllItems(allItemsGotten);
     setShowLoading(false);
   };
@@ -45,16 +45,16 @@ const OrderDetailPage = ({ route }) => {
     <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background2 }]}>
       <Header back={true} title={I18N.t('orderDetailPage.header')} />
       <View style={styles.view}>
-        {showLoading && <ActivityIndicator />}
         <FlatList
-          data={orderItems ? orderItems : []}
+          data={orderItems}
           style={[styles.flatlist, { backgroundColor: colors.background2 }]}
           contentContainerStyle={[styles.flatlist, { backgroundColor: colors.background2 }]}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }: { item: string }) => (
-            <ItemObject data={allItems} itemName={item} />
+          renderItem={({ item }: { item: OrderItemDetailProp }) => (
+            <ItemObject data={allItems} item={item} />
           )}
           ListEmptyComponent={emptyView}
+          refreshControl={<RefreshControl refreshing={showLoading} onRefresh={() => null} />}
         />
       </View>
     </SafeAreaView>

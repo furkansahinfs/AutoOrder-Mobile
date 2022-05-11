@@ -55,8 +55,16 @@ const tr = {
   notificationsPage: {
     notificationsHeader: 'Bildirimler',
   },
+  orderItem: {
+    order: 'Sipariş',
+  },
+  ordersPage: {
+    noData: 'Sipariş verisi yok',
+    size: 'Ürün Boyutu',
+    type: 'Ürün Türü',
+  },
   orderDetailPage: {
-    header: 'Sipraiş Detayı',
+    header: 'Sipariş Detayı',
     noData: 'Sipariş verisi yok',
     size: 'Ürün Boyutu',
     type: 'Ürün Türü',
@@ -79,6 +87,7 @@ const tr = {
     Back: 'Arka',
     configurationSetMessage: 'Konfigürasyon ayarlandı.',
     Front: 'Ön',
+    expiration: 'Son Kullanma için Gün Sayısı',
     header: 'Raf Konfigürasyon',
     noData: 'Konfigürasyon verisi bulunamadı',
     selectShelfItems: 'Raf Ürünleri Seç',
@@ -109,7 +118,8 @@ const tr = {
   tabbar: {
     main: 'Ana Sayfa',
     profile: 'Profil',
-    configuration: 'Configuration',
+    configuration: 'Konfigürasyon',
+    orders: 'Siparişler',
   },
   days: {
     monday: 'Pazartesi',

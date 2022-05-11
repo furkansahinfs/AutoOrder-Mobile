@@ -8,6 +8,7 @@ export interface ItemProps {
   name: string;
   size: string;
   type: string;
+  expirationTime?: number;
 }
 
 export interface ItemDTOProps {
@@ -60,4 +61,23 @@ export interface IResponse {
   error?: string;
   success: boolean;
   status: number;
+}
+
+export interface IOrders {
+  orders: OrderItemProp[];
+}
+
+export interface OrderItemProp {
+  id: number;
+  details: OrderItemDetailProp[];
+  price: number;
+  address: string;
+  createdAt: string;
+}
+
+export interface OrderItemDetailProp {
+  name: string;
+  brand: string;
+  price: number;
+  quantity: number;
 }

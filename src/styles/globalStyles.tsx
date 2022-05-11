@@ -19,14 +19,14 @@ const makeStyles = (colors: any) =>
       justifyContent: 'center',
       paddingVertical: '10%',
       borderRadius: scale(15),
-      shadowColor: 'grey',
+      shadowColor: colors.shadow,
       shadowOffset: {
         width: 0,
         height: scale(3),
       },
-      elevation: 20,
+      elevation: 10,
       zIndex: 1,
-      shadowOpacity: 0.27,
+      shadowOpacity: 0.4,
     },
 
     center: {
@@ -37,6 +37,10 @@ const makeStyles = (colors: any) =>
       alignSelf: 'center',
       textAlign: 'center',
       color: colors.text,
+    },
+
+    column: {
+      flexDirection: 'column',
     },
 
     entityLabelView: {
@@ -59,6 +63,10 @@ const makeStyles = (colors: any) =>
 
     flexible: {
       flex: 1,
+    },
+
+    flexGrow: {
+      flexGrow: 1,
     },
 
     headText: {
