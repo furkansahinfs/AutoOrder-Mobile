@@ -96,16 +96,6 @@ const ShelfConfigurationPage = ({ route }) => {
                   </Text>
                 </View>
               </View>
-
-              <FlatTextInput
-                func={(val) => {
-                  shelfChoices[0].expirationTime = parseInt(val, 10);
-                }}
-                placeholderText={I18N.t('shelfConfigurationPage.expiration')}
-                secureText={false}
-                val={item.expirationTime !== undefined ? item.expirationTime.toString() : ''}
-                keyboardType={'numeric'}
-              />
             </Card>
           )}
           ListEmptyComponent={emptyView}
