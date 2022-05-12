@@ -5,7 +5,12 @@ import { Header } from '../../../components';
 import { I18N } from '../../../locales';
 import { stylesGlobal } from '../../../styles';
 import { useTheme } from '../../../theme';
-import { getOrderDetail, getShelfItems, ItemObject } from './OrderDetailPage.helper';
+import {
+  calculateTotalPrice,
+  getOrderDetail,
+  getShelfItems,
+  ItemObject,
+} from './OrderDetailPage.helper';
 import styles from './OrderDetailPage.styles';
 
 const OrderDetailPage = ({ route }) => {
@@ -56,6 +61,11 @@ const OrderDetailPage = ({ route }) => {
           ListEmptyComponent={emptyView}
           refreshControl={<RefreshControl refreshing={showLoading} onRefresh={() => null} />}
         />
+        <View style={[styles.totalSizeView, { backgroundColor: colors.backdrop }]}>
+          <Text numberOfLines={1} style={[{ color: colors.background }]}>
+            {I18N.t('orderDetailPage.totalPrice') + ' : ' + calculateTotalPrice(orderItems) + ' TL'}
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   );

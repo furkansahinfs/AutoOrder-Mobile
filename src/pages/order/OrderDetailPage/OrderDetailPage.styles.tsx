@@ -2,6 +2,14 @@ import { StyleSheet } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
+  cardBottomDetail: {
+    paddingVertical: scale(5),
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomLeftRadius: scale(10),
+    borderBottomRightRadius: scale(10),
+  },
+
   cardItem: {
     flex: 1,
     margin: scale(10),
@@ -23,7 +31,7 @@ const styles = StyleSheet.create({
     height: scale(70),
     aspectRatio: 1,
     borderRadius: scale(10),
-    alignSelf: 'flex-start',
+    alignSelf: 'center',
   },
 
   nodataImage: {
@@ -47,8 +55,9 @@ const styles = StyleSheet.create({
   },
 
   totalSizeView: {
-    paddingVertical: scale(3),
-    borderTopWidth: 1,
+    padding: scale(5),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   safeAreaView: {

@@ -67,6 +67,7 @@ const en = {
     noData: 'There is no order data',
     size: 'Item Size',
     type: 'Item Type',
+    totalPrice: 'Total',
   },
   profilePage: {
     address: 'Address',
@@ -122,6 +123,10 @@ const en = {
     profile: 'Profile',
     configuration: 'Configuration',
     orders: 'Orders',
+  },
+  type: {
+    front: 'Front Shelf',
+    back: 'Back Shelf',
   },
   days: {
     monday: 'Monday',

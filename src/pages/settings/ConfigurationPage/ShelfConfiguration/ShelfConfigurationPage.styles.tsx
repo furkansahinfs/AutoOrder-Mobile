@@ -18,6 +18,12 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 
+  flatText: {
+    margin: scale(10),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   image: {
     width: scale(70),
     height: scale(70),

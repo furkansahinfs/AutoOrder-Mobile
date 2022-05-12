@@ -68,6 +68,7 @@ const tr = {
     noData: 'Sipariş verisi yok',
     size: 'Ürün Boyutu',
     type: 'Ürün Türü',
+    totalPrice: 'Total',
   },
   profilePage: {
     address: 'Adres',
@@ -120,6 +121,10 @@ const tr = {
     profile: 'Profil',
     configuration: 'Konfigürasyon',
     orders: 'Siparişler',
+  },
+  type: {
+    front: 'Ön Raf',
+    back: 'Arka Raf',
   },
   days: {
     monday: 'Pazartesi',

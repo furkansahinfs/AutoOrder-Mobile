@@ -15,9 +15,18 @@ export const getOrderDetail = async (orderId: number) => {
 };
 
 const testData = [
-  { name: 'İçim Milk', brand: 'Ülker', price: 80, quantity: 1 },
-  { name: 'İçim Cheese', brand: 'Ülker', price: 80, quantity: 1 },
+  { name: 'İçim Milk 1 Lt', brand: 'Ülker', price: 18, quantity: 1 },
+  { name: 'Pınar Cheese 500 Gr', brand: 'Ülker', price: 35, quantity: 1 },
+  { name: 'Nestle Chocolate 1 Kg', brand: 'Ülker', price: 46, quantity: 1 },
 ];
+
+export const calculateTotalPrice = (orderItems: Array<OrderItemDetailProp>) => {
+  let total = 0;
+  orderItems.forEach((element) => {
+    total = total + element.price;
+  });
+  return total;
+};
 
 export const getShelfItems = async () => {
   const responseItemsFront: any = await GetItemsRequest('front');
@@ -34,7 +43,7 @@ export const getShelfItems = async () => {
 
 function getItemByName(name: string, gottenData: Array<ItemProps>) {
   let item = gottenData.find((el) => {
-    return el.name.includes(name);
+    return name.includes(el.name);
   });
   return item;
 }
@@ -59,14 +68,22 @@ export const ItemObject = ({ item, data }: ItemObjectProps) => {
       <View style={globalStyles.row}>
         <Image source={Images.items[getItemNameWoutSpace(foundItem.name)]} style={styles.image} />
         <View style={styles.cardItem}>
-          <Text style={globalStyles.labelBigger}>{foundItem.name}</Text>
+          <Text style={globalStyles.labelBigger}>{item.name}</Text>
+          <Text style={globalStyles.labelBigger}>{item.brand}</Text>
           <Text style={globalStyles.labelSmaller}>
             {I18N.t('orderDetailPage.size') + ' : ' + foundItem.size}
           </Text>
           <Text style={globalStyles.labelSmaller}>
-            {I18N.t('orderDetailPage.type') + ' : ' + foundItem.type.toUpperCase()}
+            {I18N.t('orderDetailPage.type') +
+              ' : ' +
+              I18N.t('type.' + foundItem.type.toLowerCase())}
           </Text>
         </View>
+      </View>
+      <View style={[styles.cardBottomDetail, { backgroundColor: colors.backdrop }]}>
+        <Text numberOfLines={1} style={[{ color: colors.background }]}>
+          {item.price + ' TL'}
+        </Text>
       </View>
     </Card>
   ) : null;

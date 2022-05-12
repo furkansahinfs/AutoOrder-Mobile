@@ -40,7 +40,7 @@ const MyDarkTheme = {
     onSurface: 'black',
     disabled: 'black',
     placeholder: 'white',
-    backdrop: 'black',
+    backdrop: 'white',
   },
 };
 export { MyDarkTheme, MyDefaultTheme };

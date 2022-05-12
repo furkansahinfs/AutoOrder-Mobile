@@ -88,17 +88,7 @@ const ShelfConfigurationPage = ({ route }) => {
                   source={Images.items[getItemNameWoutSpace(item.name)]}
                   style={styles.image}
                 />
-                <View style={styles.cardItem}>
-                  <FlatTextInput
-                    func={(val) => {
-                      shelfChoices[0].expirationTime = parseInt(val, 10);
-                    }}
-                    placeholderText={I18N.t('shelfConfigurationPage.expiration')}
-                    secureText={false}
-                    val={item.expirationTime !== undefined ? item.expirationTime.toString() : ''}
-                    keyboardType={'numeric'}
-                  />
-                </View>
+
                 <View style={styles.cardItem}>
                   <Text style={globalStyles.labelBigger}>{item.name}</Text>
                   <Text style={globalStyles.labelSmaller}>
@@ -106,6 +96,16 @@ const ShelfConfigurationPage = ({ route }) => {
                   </Text>
                 </View>
               </View>
+
+              <FlatTextInput
+                func={(val) => {
+                  shelfChoices[0].expirationTime = parseInt(val, 10);
+                }}
+                placeholderText={I18N.t('shelfConfigurationPage.expiration')}
+                secureText={false}
+                val={item.expirationTime !== undefined ? item.expirationTime.toString() : ''}
+                keyboardType={'numeric'}
+              />
             </Card>
           )}
           ListEmptyComponent={emptyView}
