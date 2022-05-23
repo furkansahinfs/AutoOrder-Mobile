@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, RefreshControl, SafeAreaView, Text, View } from 'react-native';
-import { Images, ItemProps, OrderItemDetailProp } from '../../../assets';
+import { Images, ItemProps, OrderItemDetailProp, OrderItemProp } from '../../../assets';
 import { Header } from '../../../components';
 import { I18N } from '../../../locales';
 import { stylesGlobal } from '../../../styles';
 import { useTheme } from '../../../theme';
-import {
-  calculateTotalPrice,
-  getOrderDetail,
-  getShelfItems,
-  ItemObject,
-} from './OrderDetailPage.helper';
+import { calculateTotalPrice, getShelfItems, ItemObject } from './OrderDetailPage.helper';
 import styles from './OrderDetailPage.styles';
 
 const OrderDetailPage = ({ route }) => {
-  const orderId = route.params.id;
-  const [orderItems, setOrderItems] = useState<Array<OrderItemDetailProp>>([]);
+  const orderDetail: OrderItemProp = route.params.orderDetail;
+  const [orderItems, setOrderItems] = useState<Array<OrderItemDetailProp>>(orderDetail.orders);
   const [allItems, setAllItems] = useState<Array<ItemProps>>([]);
   const [showLoading, setShowLoading] = useState<boolean>(true);
   const { colors } = useTheme();
@@ -28,10 +23,11 @@ const OrderDetailPage = ({ route }) => {
   }, []);
 
   const init = async () => {
-    const orderDetailResult = await getOrderDetail(orderId);
+    /*const orderDetailResult = await getOrderDetail(orderId);
     if (orderDetailResult?.data) {
       setOrderItems(orderDetailResult.data);
     }
+    */
     const allItemsGotten = await getShelfItems();
     setAllItems(allItemsGotten);
     setShowLoading(false);
@@ -50,6 +46,14 @@ const OrderDetailPage = ({ route }) => {
     <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background2 }]}>
       <Header back={true} title={I18N.t('orderDetailPage.header')} />
       <View style={styles.view}>
+        <Image
+          source={{
+            uri:
+              'http://ec2-18-222-13-198.us-east-2.compute.amazonaws.com:8080/api/v1/images/' +
+              orderDetail.image_path,
+          }}
+          style={styles.shelfImage}
+        />
         <FlatList
           data={orderItems}
           style={[styles.flatlist, { backgroundColor: colors.background2 }]}

@@ -37,7 +37,7 @@ const FlatListView = ({ onReachedEnd, onRefresh, orders, showLoading }: IFlatLis
       style={{ backgroundColor: colors.background }}
       keyExtractor={(item, index) => index.toString()}
       ListEmptyComponent={emptyView}
-      renderItem={({ item }: { item: any }) => {
+      renderItem={({ item }: { item: OrderItemProp }) => {
         return <OrderItem props={item} />;
       }}
       onEndReached={onReachedEnd}

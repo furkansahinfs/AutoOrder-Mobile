@@ -3,7 +3,7 @@ import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
 import { ActivityIndicator } from 'react-native-paper';
 import { Images, ItemProps } from '../../../../assets';
-import { FlatTextInput, Header, Icon, TextButton } from '../../../../components';
+import { Header, Icon, TextButton } from '../../../../components';
 import { I18N } from '../../../../locales';
 import { stylesGlobal } from '../../../../styles';
 import { useTheme } from '../../../../theme';

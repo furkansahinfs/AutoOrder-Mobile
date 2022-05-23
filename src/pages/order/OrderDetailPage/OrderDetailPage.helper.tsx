@@ -9,23 +9,18 @@ import { useTheme } from '../../../theme';
 
 import styles from './OrderDetailPage.styles';
 
+/*
 export const getOrderDetail = async (orderId: number) => {
-  //return await GetOrderDetailRequest(orderId);
-  return { data: testData };
+  return await GetOrderDetailRequest(orderId);
 };
-
-const testData = [
-  { name: 'İçim Milk 1 Lt', brand: 'Ülker', price: 18, quantity: 1 },
-  { name: 'Pınar Cheese 500 Gr', brand: 'Ülker', price: 35, quantity: 1 },
-  { name: 'Nestle Chocolate 1 Kg', brand: 'Ülker', price: 46, quantity: 1 },
-];
+*/
 
 export const calculateTotalPrice = (orderItems: Array<OrderItemDetailProp>) => {
   let total = 0;
   orderItems.forEach((element) => {
     total = total + element.price;
   });
-  return total;
+  return total.toFixed(2);
 };
 
 export const getShelfItems = async () => {
@@ -62,14 +57,14 @@ interface ItemObjectProps {
 export const ItemObject = ({ item, data }: ItemObjectProps) => {
   const { colors } = useTheme();
   const globalStyles = stylesGlobal(colors);
-  const foundItem: ItemProps | undefined = getItemByName(item.name, data);
+  const foundItem: ItemProps | undefined = getItemByName(item.productName, data);
   return foundItem !== undefined ? (
     <Card containerStyle={[globalStyles.card, styles.cardOverride]}>
       <View style={globalStyles.row}>
         <Image source={Images.items[getItemNameWoutSpace(foundItem.name)]} style={styles.image} />
         <View style={styles.cardItem}>
-          <Text style={globalStyles.labelBigger}>{item.name}</Text>
-          <Text style={globalStyles.labelBigger}>{item.brand}</Text>
+          <Text style={globalStyles.labelBigger}>{item.productName}</Text>
+          <Text style={globalStyles.labelBigger}>{item.brandName}</Text>
           <Text style={globalStyles.labelSmaller}>
             {I18N.t('orderDetailPage.size') + ' : ' + foundItem.size}
           </Text>

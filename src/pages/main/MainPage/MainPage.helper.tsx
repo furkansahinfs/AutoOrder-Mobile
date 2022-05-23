@@ -6,7 +6,6 @@ import {
 import { FileProps } from '../../../assets';
 import { Toast } from '../../../components';
 import { I18N } from '../../../locales';
-import { navigate } from '../../../navigation';
 
 //TODO
 /**
@@ -17,13 +16,8 @@ export async function sendPhoto(photo: FileProps, setShowLoading: (val: boolean)
   const response: any = await SendImageRequest(photo);
 
   if (response !== false) {
-    const list: Array<string> = controlPhotoResult(response);
-
-    if (list.length > 0) {
-      navigate('OrderDetail', { order: list });
-    } else {
-      Toast(I18N.t('mainPage.orderNotCreated'), false);
-    }
+    //const list: Array<string> = controlPhotoResult(response);
+    Toast(I18N.t('mainPage.orderIsCreated'), false);
   } else {
     Toast(I18N.t('mainPage.imageNotAnalysed'), false);
   }

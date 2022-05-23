@@ -46,6 +46,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  shelfImage: {
+    width: '90%',
+    height: scale(200),
+    borderRadius: scale(10),
+    alignSelf: 'center',
+  },
+
   totalSizeText: {
     textAlign: 'right',
     paddingVertical: scale(5),

@@ -2,13 +2,12 @@ import React, { memo } from 'react';
 import { Image, Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Images, OrderItemProp } from '../../../../../assets';
-import { formatDate } from '../../../../../helpers';
+import { OrderItemProp } from '../../../../../assets';
 import { I18N } from '../../../../../locales';
 import { navigate } from '../../../../../navigation';
 import { stylesGlobal } from '../../../../../styles';
 import { useTheme } from '../../../../../theme';
-import { findPicture, getItemNameWoutSpace } from './OrderItem.helper';
+import { calculateTotalPrice } from './OrderItem.helper';
 import styles from './OrderItem.styles';
 
 interface IOrderItem {
@@ -18,41 +17,36 @@ const OrderItem = ({ props }: IOrderItem) => {
   const { colors } = useTheme();
   const globalStyles = stylesGlobal(colors);
 
-  const imageName = findPicture(props.details);
+  const imgUrl =
+    'http://ec2-18-222-13-198.us-east-2.compute.amazonaws.com:8080/api/v1/images/' +
+    props.image_path;
+
   return (
     <TouchableOpacity
-      onPress={() => navigate('OrderDetail', { orderId: props?.id })}
+      onPress={() => navigate('OrderDetail', { orderDetail: props })}
       style={styles.touchableItem}
     >
       <Card containerStyle={[globalStyles.card, styles.cardOverride]}>
         <View style={[globalStyles.column]}>
           <View style={globalStyles.column}>
             <View style={globalStyles.row}>
-              <Image source={Images.foodOrder} style={styles.image} />
               <Image
-                source={Images.items[getItemNameWoutSpace(imageName)]}
-                style={styles.itemImage}
+                source={{
+                  uri: imgUrl,
+                }}
+                style={styles.image}
               />
             </View>
             <View style={styles.cardItem}>
               <Text numberOfLines={3} style={[styles.titleLabel, { color: colors.text }]}>
                 {I18N.t('orderItem.order') + ' ' + props?.id}
               </Text>
-
-              <View style={styles.cardLocationView}>
-                <Text style={[styles.locationLabel, { color: colors.text }]}>
-                  {'📍 ' + props.address}
-                </Text>
-                <Text style={[styles.locationLabel, { color: colors.text }]}>
-                  {'🕒 ' + formatDate(new Date(props.createdAt))}
-                </Text>
-              </View>
             </View>
           </View>
 
           <View style={[styles.cardBottomDetail, { backgroundColor: colors.backdrop }]}>
             <Text numberOfLines={1} style={[styles.detailLabel, { color: colors.background }]}>
-              {props.price + ' TL'}
+              {calculateTotalPrice(props.orders) + ' TL'}
             </Text>
           </View>
         </View>

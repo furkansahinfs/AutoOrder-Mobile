@@ -21,12 +21,11 @@ const OrdersPage = () => {
   async function fetchOrders(isRefresh?: boolean) {
     setShowLoading(true);
     const result: any = await getOrders();
-    if (result?.data) {
-      const content = result?.data?.content;
+
+    if (result instanceof Array) {
+      const content = result;
       setOrders(isRefresh ? content : orders.concat(content));
-      setTotalElementSize(
-        result?.data?.total_elements ? result.data.total_elements : pageNumber * pageSize,
-      );
+      setTotalElementSize(result?.total_elements ? result.total_elements : pageNumber * pageSize);
     }
 
     setShowLoading(false);

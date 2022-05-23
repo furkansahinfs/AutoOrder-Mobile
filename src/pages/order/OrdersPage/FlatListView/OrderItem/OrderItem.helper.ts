@@ -13,7 +13,7 @@ function searchInImages(element: OrderItemDetailProp) {
   const obj = Images.items;
   let imageName = '';
   for (const key in obj) {
-    if (element.name.toLocaleLowerCase().includes(key.toLocaleLowerCase())) {
+    if (element.productName.toLocaleLowerCase().includes(key.toLocaleLowerCase())) {
       imageName = key;
       break;
     }
@@ -26,3 +26,11 @@ export function getItemNameWoutSpace(itemName: string) {
     .filter((s) => s)
     .join('');
 }
+
+export const calculateTotalPrice = (orderItems: Array<OrderItemDetailProp>) => {
+  let total = 0;
+  orderItems.forEach((element) => {
+    total = total + element.price;
+  });
+  return total.toFixed(2);
+};

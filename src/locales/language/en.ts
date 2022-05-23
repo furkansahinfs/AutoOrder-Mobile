@@ -48,6 +48,7 @@ const en = {
     configurationNotFound: 'You have to configure your shelf in configuration to send a photo.',
     imageNotAnalysed: "Image can't be analysed!",
     orderNotCreated: "Order can't be created",
+    orderIsCreated: 'Order is created',
     pleaseWait: 'Please wait, photo will be analysed!',
     sendPhoto: 'Send Photo',
   },

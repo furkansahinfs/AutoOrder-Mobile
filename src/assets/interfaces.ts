@@ -64,20 +64,19 @@ export interface IResponse {
 }
 
 export interface IOrders {
-  orders: OrderItemProp[];
+  orderHistory: OrderItemProp[];
 }
 
 export interface OrderItemProp {
   id: number;
-  details: OrderItemDetailProp[];
-  price: number;
-  address: string;
+  image_path: string;
+  orders: OrderItemDetailProp[];
   createdAt: string;
 }
 
 export interface OrderItemDetailProp {
-  name: string;
-  brand: string;
+  productName: string;
+  brandName: string;
   price: number;
   quantity: number;
 }
